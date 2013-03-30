@@ -4,6 +4,7 @@
 *_flymake*
 el-get
 auto-save-list
+ac-comphist.dat
 .emacs-places
 .recentf
 local/clang/stdafx.pch
