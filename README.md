@@ -1,4 +1,6 @@
-dotfiles
-========
+dot.emacs.d
+===========
 
-Setup files in my HOME directory.
+My Emacs configuration files
+
+
