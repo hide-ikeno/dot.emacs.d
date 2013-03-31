@@ -24,9 +24,16 @@
 
   ;; Change face for dark color theme
   (set-face-background 'helm-selection "blue")
-  
+
   ;; Keybindings
-  (global-set-key (kbd "C-;") 'helm-mini)
+  (defun helm-my-buffers ()
+    (interactive)
+    (helm-other-buffer '(helm-c-source-buffers-list
+                         helm-c-source-files-in-current-dir
+                         helm-c-source-recentf
+                         helm-c-source-buffer-not-found)
+                       "*helm-my-buffers*"))
+  (global-set-key (kbd "C-;") 'helm-my-buffers)
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "M-y") 'helm-show-kill-ring)
   (global-set-key (kbd "C-M-z") 'helm-resume)
@@ -60,7 +67,8 @@
   ;; helm-c-yasnippet
   (when (require 'helm-c-yasnippet)
     (setq helm-c-yas-space-match-any-greedy t) ;; [default: nil]
-    (global-set-key (kbd "C-c y") 'helm-c-yas-complete)
+    ;; (global-set-key (kbd "C-c y") 'helm-c-yas-complete)
+    (define-key yas-minor-mode-map (kbd "C-c y") 'helm-c-yas-complete)
     )
 
   ;; helm-ls-git

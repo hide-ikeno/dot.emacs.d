@@ -3,12 +3,12 @@
 ;;; File: ~/.emacs.d/conf/10_history.el
 ;;; Description: Customize history
 ;;;
+(el-get 'sync '(recentf-ext))
 
 ;;; 履歴数を大きくする
 (setq history-length 10000)
 
 ;;; recenrf - 最近使ったファイルを記憶させる
-(el-get 'sync '(recentf-ext))
 (require 'recentf)
 (require 'recentf-ext nil t)
 (setq recentf-save-file (expand-file-name "~/.emacs.d/.recentf"))
