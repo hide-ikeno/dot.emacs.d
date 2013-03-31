@@ -195,9 +195,9 @@
 ;;;=============================================================================
 ;;; Python mode
 ;;;=============================================================================
-(autoload 'python-mode "python-mode" "Mode for editing python source files" t)
-(add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
-(add-to-list 'auto-mode-alist '("Sconscript$" . python-mode))
+;; (autoload 'python-mode "python-mode" "Mode for editing python source files" t)
+;; (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
+;; (add-to-list 'auto-mode-alist '("Sconscript$" . python-mode))
 ;; NOTE: further configuration in [[~/.emacs.d/conf/60_auto-complete.el]]
 
 ;;;=============================================================================
