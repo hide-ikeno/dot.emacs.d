@@ -26,6 +26,7 @@
   (set-face-background 'helm-selection "blue")
 
   ;; Keybindings
+
   (defun helm-my-buffers ()
     (interactive)
     (helm-other-buffer '(helm-c-source-buffers-list
@@ -33,6 +34,14 @@
                          helm-c-source-recentf
                          helm-c-source-buffer-not-found)
                        "*helm-my-buffers*"))
+
+  ;; (defun helm-my-files-history ()
+  ;;   (interactive)
+  ;;   (helm-other-buffer '(helm-c-source-recentf
+  ;;                        helm-c-source-file-cache
+  ;;                        helm-c-source-buffer-not-found)
+  ;;                      "*helm-my-files-history*"))
+
   (global-set-key (kbd "C-;") 'helm-my-buffers)
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "M-y") 'helm-show-kill-ring)
