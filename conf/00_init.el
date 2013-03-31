@@ -76,43 +76,19 @@
 (display-time)
 
 ;;; Show line numbers and column numbers
-(line-number-mode t)					; show line number on modeline
-(column-number-mode t)					; show column number on modeline
+(line-number-mode t)                    ; show line number on modeline
+(column-number-mode t)                  ; show column number on modeline
 (if (require 'linum nil t)
     (global-linum-mode t))
 (if (require 'ruler-mode nil t)
     (ruler-mode t))
 
 ;;==============================================================================
-;; Customize some default keybinds
-;;==============================================================================
-
-;; C-h: BackSpace (<= help-for-help)
-(keyboard-translate ?\C-h ?\C-?)
-
-;; C-m newline-and-indent (<= newline)
-(global-set-key (kbd "C-m") 'newline-and-indent)
-;; C-t other-window (<= transpose-chars)
-(global-set-key (kbd "C-t") 'other-window)
-
-;; M-?, [f1]: help-for-help
-(global-set-key (kbd "M-?") 'help-for-help)
-(global-set-key [f1] 'help-for-help)
-
-;; M-h backward-kill-word (<= mark-paragraph)
-(global-set-key (kbd "M-h") 'backward-kill-word)
-;; M-H mark-paragraph
-(global-set-key (kbd "M-H") 'mark-paragraph)
-;; M-g goto-line
-(global-set-key (kbd "M-g") 'goto-line)
-
-;;; 日本語でインクリメンタルサーチ
-(define-key isearch-mode-map (kbd "C-k") 'isearch-edit-string)
-
-
-;;==============================================================================
 ;; Customize basic packages
 ;;==============================================================================
+
+;;; uniquify -- 同名バッファを分かり易く
+(require 'uniquify)
 
 ;;; filecache
 (when (require 'filecache nil t)
@@ -138,20 +114,18 @@
 ;;; whitespace -- 空白や長すぎる行を視覚化する
 (require 'whitespace)
 (setq whitespace-line-column 80)
-(setq whitespace-style '(face              ; faceを使って視覚化する
+(setq whitespace-style '(face           ; faceを使って視覚化する
                          tabs
                          tab-mark
                          spaces
                          space-mark
-                         trailing          ; 行末の空白を対象とする
-                         lines-tail        ; 長すぎる行のうち
+                         trailing         ; 行末の空白を対象とする
+                         lines-tail       ; 長すぎる行のうち
                                         ; whitespace-line-column
                                         ; 以降のみを対象とする
-                         space-before-tab  ; タブの前にあるスペースを対象とする
-                         space-after-tab ; タブの後にあるスペースを対象とす
+                         space-before-tab ; タブの前にあるスペースを対象とする
+                         space-after-tab  ; タブの後にあるスペースを対象とす
                          ))
-;; (setq whitespace-style
-;;       '(tabs tab-mark spaces space-mark))
 ;; 全角スペースを視覚化
 (setq whitespace-space-regexp "\\(\x3000+\\)")
 (setq whitespace-display-mappings
