@@ -7,6 +7,7 @@
 ;;;=============================================================================
 ;;; VC -- Emacs version control
 ;;;=============================================================================
+(require 'vc)
 (setq make-backup-files t)
 (setq backup-directory-alist
       ;; Make Backup files into ~/bak
