@@ -1,7 +1,6 @@
 *.swp
 *~
 *.elc
-*_flymake*
 el-get
 auto-save-list
 ac-comphist.dat
