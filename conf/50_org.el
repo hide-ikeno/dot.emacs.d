@@ -38,10 +38,10 @@
   (setq org-capture-templates
         '(
           ;; TODO list
-          ("t" "TODO" entry (+headline "~/Dropbox/org/todo.org" "Tasks")
+          ("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Tasks")
            "* TASK %?\n %i\n %a")
           ;; Shopping
-          ("s" "Shopping" entry (+headline "~/Dropbox/org/todo.org" "Shopping")
+          ("s" "Shopping" entry (file+headline "~/Dropbox/org/todo.org" "Shopping")
            "* TASK %?n を買う")
           ;; Memo, Bookmarks, records
           ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org")
