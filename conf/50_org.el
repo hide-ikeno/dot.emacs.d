@@ -87,28 +87,6 @@
   ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, and
   ;; org-protocol
   (setq org-capture-templates
-<<<<<<< HEAD
-        '(
-          ;; TODO list
-          ("t" "TODO" entry (file+headline "~/Dropbox/org/todo.org" "Tasks")
-           "* TASK %?\n %i\n %a")
-          ;; Shopping
-          ("s" "Shopping" entry (file+headline "~/Dropbox/org/todo.org" "Shopping")
-           "* TASK %?n を買う")
-          ;; Memo, Bookmarks, records
-          ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org")
-           "* %?n %Un %in %a")
-          ;; Research note
-          ("n" "Note" entry (file+headline "~/Dropbox/org/notes.org" "Notes")
-           "* %?n %Un %i")
-          ;; Literature in BiBTeX
-          ("a" "Article" entry (file+headline "~/Dropbox/org/reading.org" "Articles")
-           "* %An Ref. on %Un %:author [%:year]: %:titlen
-                                   In %:journal, pp. %:pages.n Comment: %?")
-          ("b" "Book" entry (file+headline "~/Dropbox/org/reading.org" "Books")
-           "* %An Ref. on %Un %:author [%:year]: %:titlen Comment: %?")
-          ))
-=======
         '(("t" "todo" entry (file (concat org-directory "/refile.org"))
            "* TASK %?\n%U\n%a\n" :clock-in t :clock-resume t)
           ("r" "respond" entry (file (concat org-directory "/refile.org"))
@@ -123,7 +101,6 @@
            "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
           ("h" "Habit" entry (file (concat org-directory "/refile.org"))
            "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"<%Y-%m-%d %a .+1d/3d>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")))
->>>>>>> Org mode -- change TODO keywords, agenda, capture templates
 
   ;; Remove empty LOGBOOK drawers on clock out
   (defun bh/remove-empty-drawer-on-clock-out ()
