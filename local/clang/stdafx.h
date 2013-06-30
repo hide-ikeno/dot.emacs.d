@@ -85,4 +85,6 @@
 // Eigen3 headers
 //#include <Eigen/Core>
 
+// Armadillo C++ Linear Algebra library
+#include <armadillo>
 #endif /* STDAFX_H_PCH */
