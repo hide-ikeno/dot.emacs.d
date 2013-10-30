@@ -189,9 +189,7 @@
           '(lambda ()
              (setq tab-width 2)
              (setq ruby-indent-level tab-width)
-             (setq ruby-deep-indent-paren-style nil)
-             (define-key ruby-mode-map "\C-m"
-               'ruby-reindent-then-newline-and-indent)))
+             (setq ruby-deep-indent-paren-style nil)))
 ;;;=============================================================================
 ;;; Python mode
 ;;;=============================================================================

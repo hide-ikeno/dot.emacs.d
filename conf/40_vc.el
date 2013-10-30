@@ -21,10 +21,9 @@
 ;;;=============================================================================
 ;;; Git customization
 ;;;=============================================================================
-(el-get 'sync '(gist git-gutter-fringe magit magithub))
+(el-get 'sync '(gist git-gutter-fringe magit))
 
 (require 'magit nil t)
-(require 'magithub nil t)
 (when (require 'git-gutter-fringe nil t)
   (git-gutter-mode)
   )
