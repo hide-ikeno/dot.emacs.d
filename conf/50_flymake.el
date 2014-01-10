@@ -56,7 +56,7 @@
                             "-fno-color-diagnostics"
                             "-std=c++11"
                             "-stdlib=libc++"
-                            "-I/usr/local/include/eigen3"
+                            ;; "-I/usr/local/include/eigen3"
                             ;; "-U__STRICT_ANSI__"
                             ;; "-D__STDC_FORMAT_MACROS"
                             local-file))))
