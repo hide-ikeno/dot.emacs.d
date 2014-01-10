@@ -94,7 +94,7 @@
         (member-init-cont       . c-lineup-multi-inher) ; メンバオブジェクトの初期化リスト
         (inline-open            . 0)                    ; 関数の開始
         (inline-close           . 0)
-        (innamespace            . 0)
+        (innamespace            . +)
         (template-args-cont     (c-lineup-template-args +))
         ;;(template-args-cont     . +)
         ))

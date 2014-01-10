@@ -83,6 +83,9 @@
 #include <vector>
 
 // Eigen3 headers
-//#include <Eigen/Core>
+#include <eigen3/Eigen/Core>
+
+// Armadillo C++ library
+#include <armadillo>
 
 #endif /* STDAFX_H_PCH */
