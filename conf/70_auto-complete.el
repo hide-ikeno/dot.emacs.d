@@ -6,7 +6,7 @@
 
 (el-get 'sync '(auto-complete
                 auto-complete-chunk
-                auto-complete-clang
+                ;; auto-complete-clang
                 auto-complete-css
                 auto-complete-emacs-lisp
                 auto-complete-etags
@@ -23,21 +23,34 @@
   (define-key ac-mode-map  [(control tab)] 'auto-complete)
   (setq ac-delay 0.3)
 
-  ;; Auto Complete Clang
-  (if (require 'auto-complete-clang nil t)
+  ;; ;; Auto Complete Clang
+  ;; (if (require 'auto-complete-clang nil t)
+  ;;     (progn
+  ;;       ;; Change cc-mode setting
+  ;;       (defun my-ac-cc-mode-setup ()
+  ;;         (setq ac-sources (append '(ac-source-clang ac-source-gtags) ac-sources))
+  ;;         (setq ac-clang-prefix-header "~/.emacs.d/local/clang/stdafx.pch"))
+  ;;       ;; Location of clang executable
+  ;;       (setq ac-clang-executable "clang")
+  ;;       ;; Determines whether to save the buffer when retrieving completions.
+  ;;       (setq ac-clang-auto-save nil)
+  ;;       ;; function to return the lang type for option -x
+  ;;       (setq ac-clang-lang-option-function nil)
+  ;;       ;; Extra compilation flags to pass to the Clang executable.
+  ;;       (setq ac-clang-flags '("-Wall" "-std=c++11" "-stdlib=libc++"))
+  ;;       )
+  ;;   (defun my-ac-cc-mode-setup ()
+  ;;     (setq ac-sources (append '(ac-source-gtags) ac-sources)))
+  ;;   )
+
+  ;; Emacs Clang Completion Async (clang-complete is installed in system directory)
+  (if (require 'auto-complete-clang-async nil t)
       (progn
         ;; Change cc-mode setting
         (defun my-ac-cc-mode-setup ()
-          (setq ac-sources (append '(ac-source-clang ac-source-gtags) ac-sources))
-          (setq ac-clang-prefix-header "~/.emacs.d/local/clang/stdafx.pch"))
-        ;; Location of clang executable
-        (setq ac-clang-executable "clang")
-        ;; Determines whether to save the buffer when retrieving completions.
-        (setq ac-clang-auto-save nil)
-        ;; function to return the lang type for option -x
-        (setq ac-clang-lang-option-function nil)
-        ;; Extra compilation flags to pass to the Clang executable.
-        (setq ac-clang-flags '("-Wall" "-std=c++11" "-stdlib=libc++"))
+          (setq ac-clang-complete-executable "clang-complete")
+          (setq ac-sources (append '(ac-source-clang-async ac-source-gtags) ac-sources))
+          (ac-clang-launch-completion-process))
         )
     (defun my-ac-cc-mode-setup ()
       (setq ac-sources (append '(ac-source-gtags) ac-sources)))
@@ -56,6 +69,5 @@
     (global-auto-complete-mode t))
 
   (my-ac-config)
-
   )
 
