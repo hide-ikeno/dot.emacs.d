@@ -88,6 +88,7 @@
 
   ;; helm-gtags
   (when (require 'helm-gtags nil t)
+    (setq helm-gtags-auto-update t)
     (add-hook 'helm-gtags-mode-hook
               '(lambda ()
                  (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
