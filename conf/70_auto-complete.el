@@ -52,7 +52,7 @@
           ;; Sources for auto-complete in cc-mode
           (setq ac-sources (append '(ac-source-clang-async ac-source-gtags) ac-sources))
           ;; Extra compilation flags to pass to the Clang executable.
-          (setq ac-clang-flags '("-Wall" "-std=c++11" "-stdlib=libc++"))
+          (setq ac-clang-flags '("-Wall" "-std=c++11" "-stdlib=libc++" "-I/usr/local/include/eigen3"))
           (ac-clang-launch-completion-process))
         )
     (defun my-ac-cc-mode-setup ()

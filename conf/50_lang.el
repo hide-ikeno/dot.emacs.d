@@ -94,6 +94,8 @@
         (member-init-cont       . c-lineup-multi-inher) ; メンバオブジェクトの初期化リスト
         (inline-open            . 0)                    ; 関数の開始
         (inline-close           . 0)
+        (namespace-open         . 0)
+        (namespace-close        . 0)
         (innamespace            . 0)
         (template-args-cont     (c-lineup-template-args +))
         ;;(template-args-cont     . +)
@@ -103,44 +105,45 @@
     )
   "My C Programming Style")
 
+;; my-c-style を登録して有効にする場合
+(c-add-style "PERSONAL" my-c-style)
+
+(defun my-c-mode-common-hook()
+  ;; 次のスタイルがデフォルトで用意されているスタイル
+  ;;   * gnu:インデントは 2 ．GNU の推奨スタイル
+  ;;   * k&r:インデントは 5 ．K&R のスタイル
+  ;;   * bsd:インデントは 8 ．BSD のスタイル("Allman style")
+  ;;   * stroustrup:インデントは 4 ． Bjarne Stroustrup による，「プロ
+  ;;   グラミング言語 C++ 」のスタイル
+  ;;   * whitesmith:インデントは 4 ． P ・ J ・プローガーのスタイル．
+  ;;   * ellemtel:インデントは 3 ．Programming in C++ Rules and Recommendations で提案されているスタイル．
+  ;;   * linux:インデントは 8 ． Linux のスタイル
+  ;;   * cc-mode:インデントは 4 ． cc-mode オリジナル
+  ;;   * python:インデントは 8 ． Python 用のスタイル
+  ;;   * java:インデントは 4 ． JAVA 用のスタイル．
+  ;; java style を使用
+  ;; (c-set-style "java")
+  (c-set-style "PERSONAL")
+
+  (setq-default fill-column 80) ; 段落整形時の折り返しの文字数
+  (setq indent-tabs-mode nil)   ; Tabの代わりにスペースでインデント
+  (setq c-echo-syntactic-information-p t) ; インデント時に構文解析情報を表示する
+  (setq c-toggle-auto-state t) ; 自動改行(auto-newline)を有効にする
+  (setq c-toggle-hungry-state t) ; 連続する空白の一括削除(hungry-delete)を有効にする
+  (setq c-toggle-hungry-state t) ; 連続する空白の一括削除(hungry-delete)を有効にする
+  (setq c-hanging-semi&comma-criteria nil) ; セミコロンで自動改行しない
+  (subword-mode 1)                         ; CamelCase
+
+  ;; キーバインドの追加
+  ;; ------------------
+  ;; C-m        改行＋インデント
+  ;; C-h        空白の一括削除
+  ;; (define-key c-mode-base-map "\C-m" 'newline-and-indent)
+  (define-key c-mode-base-map "\C-h" 'c-electric-backspace)
+  )
+
 ;; hook の設定
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            ;; 次のスタイルがデフォルトで用意されているスタイル
-            ;;   * gnu:インデントは 2 ．GNU の推奨スタイル
-            ;;   * k&r:インデントは 5 ．K&R のスタイル
-            ;;   * bsd:インデントは 8 ．BSD のスタイル("Allman style")
-            ;;   * stroustrup:インデントは 4 ． Bjarne Stroustrup による，「プロ
-            ;;   グラミング言語 C++ 」のスタイル
-            ;;   * whitesmith:インデントは 4 ． P ・ J ・プローガーのスタイル．
-            ;;   * ellemtel:インデントは 3 ．Programming in C++ Rules and Recommendations で提案されているスタイル．
-            ;;   * linux:インデントは 8 ． Linux のスタイル
-            ;;   * cc-mode:インデントは 4 ． cc-mode オリジナル
-            ;;   * python:インデントは 8 ． Python 用のスタイル
-            ;;   * java:インデントは 4 ． JAVA 用のスタイル．
-            ;; java style を使用
-            ;; (c-set-style "java")
-            ;; my-c-style を登録して有効にする場合
-            (c-add-style "my-c-style" my-c-style t)
-            (c-set-style "my-c-style")
-
-            (setq-default fill-column 80) ; 段落整形時の折り返しの文字数
-            (setq indent-tabs-mode nil)   ; Tabの代わりにスペースでインデント
-            (setq c-echo-syntactic-information-p t) ; インデント時に構文解析情報を表示する
-            (setq c-toggle-auto-state t) ; 自動改行(auto-newline)を有効にする
-            (setq c-toggle-hungry-state t) ; 連続する空白の一括削除(hungry-delete)を有効にする
-            (setq c-toggle-hungry-state t) ; 連続する空白の一括削除(hungry-delete)を有効にする
-            (setq c-hanging-semi&comma-criteria nil) ; セミコロンで自動改行しない
-            (subword-mode 1)                         ; CamelCase
-
-            ;; キーバインドの追加
-            ;; ------------------
-            ;; C-m        改行＋インデント
-            ;; C-h        空白の一括削除
-            ;; (define-key c-mode-base-map "\C-m" 'newline-and-indent)
-            (define-key c-mode-base-map "\C-h" 'c-electric-backspace)
-
-            ))
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 ;; Additional C++11 keywords
 ;;  <http://stackoverflow.com/questions/8549351/c11-mode-or-settings-for-emacs>
