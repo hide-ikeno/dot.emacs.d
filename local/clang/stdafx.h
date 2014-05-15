@@ -83,7 +83,7 @@
 #include <vector>
 
 // Eigen3 headers
-#include <eigen3/Eigen/Core>
+#include <Eigen/Core>
 
 // Armadillo C++ library
 #include <armadillo>
