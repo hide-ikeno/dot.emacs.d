@@ -7,7 +7,7 @@
 ;;;=============================================================================
 ;;; External packages
 ;;;=============================================================================
-(el-get 'sync '(cmake-mode yaml-mode))
+(el-get 'sync '(cmake-mode yaml-mode doxymacs))
 
 ;;;=============================================================================
 ;;; cc-mode
@@ -258,10 +258,18 @@
 ;;;=============================================================================
 ;;; Python mode
 ;;;=============================================================================
-;; (autoload 'python-mode "python-mode" "Mode for editing python source files" t)
-;; (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
-;; (add-to-list 'auto-mode-alist '("Sconscript$" . python-mode))
-;; NOTE: further configuration in [[~/.emacs.d/conf/60_auto-complete.el]]
+
+;; IPython
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args ""
+      python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+      python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+      python-shell-completion-setup-code
+      "from IPython.core.completerlib import module_completion"
+      python-shell-completion-module-string-code
+      "';'.join(module_completion('''%s'''))\n"
+      python-shell-completion-string-code
+      "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
 
 ;;;=============================================================================
 ;;; CMake mode
@@ -286,3 +294,15 @@
                (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
   )
 
+
+;;;=============================================================================
+;;; Doxymacs -- Doxygen + Emacs
+;;;  <http://doxymacs.sourceforge.net/>
+;;;=============================================================================
+(when (require 'doxymacs nil t)
+  (defun my-doxymacs-font-lock-hook ()
+    (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
+        (doxymacs-font-lock)))
+  (setq doxymacs-doxygen-style "Qt") ;; Qt or JavaDoc or C++ or C++!
+  (add-hook 'font-lock-mode-hook 'my-doxymacs-font-lock-hook)
+  (add-hook 'c-mode-common-hook 'doxymacs-mode))
