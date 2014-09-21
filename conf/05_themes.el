@@ -4,7 +4,7 @@
 ;;; Description: Customize Emacs themes
 ;;;
 
-(el-get 'sync '(solarized-theme))
+(el-get 'sync '(color-theme-solarized))
 
 ;; (load-theme 'solarized-light t)
 (load-theme 'solarized-dark t)
