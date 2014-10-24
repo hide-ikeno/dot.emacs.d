@@ -4,9 +4,7 @@
 ;;; Description: Setup helm
 ;;;
 
-;; NOTE -- typo in el-get recipe file helm-c-moccur 
 (el-get 'sync '(helm
-                helm-c-moccur
                 helm-c-yasnippet
                 helm-descbinds
                 helm-gist
@@ -52,20 +50,16 @@
   (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
   (helm-mode 1)
 
+  ;; helm-occur
+  (global-set-key (kbd "M-o") 'helm-occur)
+  ;; isearchからhelm-occurを起動
+  (define-key isearch-mode-map (kbd "C-o") 'helm-occur-from-isearch)
+  ;; helm-occurからall-extに受け渡し
+  (define-key helm-map (kbd "C-c C-a") 'all-from-helm-occur)
+
   ;; helm-descbinds
   (when (require 'helm-descbinds nil t)
     (helm-descbinds-mode))
-
-  ;; helm-c-moccur
-  (when (require 'helm-c-moccur nil t)
-    (global-set-key (kbd "M-o") 'helm-c-moccur-occur-by-moccur)
-    (global-set-key (kbd "C-M-o") 'helm-c-moccur-dmoccur)
-    (add-hook 'dired-mode-hook
-              '(lambda ()
-                 (local-set-key (kbd "O") 'helm-c-moccur-dired-do-moccur-by-moccur)))
-    (global-set-key (kbd "C-M-s") 'helm-c-moccur-isearch-forward)
-    (global-set-key (kbd "C-M-r") 'helm-c-moccur-isearch-backward)
-    )
 
   ;; helm-ls-git
   (require 'helm-gist nil t)
