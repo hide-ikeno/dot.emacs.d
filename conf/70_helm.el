@@ -46,6 +46,7 @@
   (global-set-key (kbd "C-M-z") 'helm-resume)
   (global-set-key (kbd "C-x C-f") 'helm-find-files)
   (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+  (global-set-key (kbd "C-c i") 'helm-imenu)
   (define-key helm-map (kbd "C-M-n") 'helm-next-source)
   (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
   (helm-mode 1)
