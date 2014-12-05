@@ -4,6 +4,8 @@
 ;;; Description: Customize dired mode
 ;;;
 
+(el-get 'sync '(sr-speedbar))
+
 (require 'dired)
 (require 'dired-aux)
 
@@ -50,3 +52,6 @@
   (dired-map-over-marks-check
    (function dired-convert-coding-system) arg 'convert-coding-system t))
 
+
+(when (require 'sr-speedbar nil t)
+  (setq sr-speedbar-right-side nil))
