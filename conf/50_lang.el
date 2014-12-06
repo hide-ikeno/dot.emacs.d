@@ -3,11 +3,12 @@
 ;;; File: ~/.emacs.d/conf/50_lang.el
 ;;; Description: Customize major mode for programing languages
 ;;;
+;;; Code:
 
 ;;;=============================================================================
 ;;; External packages
 ;;;=============================================================================
-(el-get 'sync '(cmake-mode yaml-mode doxymacs markdown-mode))
+(el-get 'sync '(cmake-mode yaml-mode doxymacs markdown-mode pandoc-mode))
 
 ;;;=============================================================================
 ;;; cc-mode
@@ -317,3 +318,21 @@
 (add-to-list 'auto-mode-alist '("\\.txt\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;;;=============================================================================
+;;; Pandoc Mode
+;;;   <http://joostkremers.github.io/pandoc-mode/>
+;;;=============================================================================
+;; C-c/r ~ Run pandoc on the document (pandoc-run-pandoc)
+;; C-c/p ~ Run markdown2pdf on the document (pandoc-convert-to-pdf)
+;; C-c/s ~ Save the settings file (pandoc-save-settings-file)
+;; C-c/w ~ Set the output format (pandoc-set-write)
+;; C-c/m ~ Set a metadata item (pandoc-set-metadata)
+;; C-c/v ~ Set a template variable (pandoc-set-variable)
+;; C-c/V ~ View the output buffer (pandoc-view-output)
+;; C-c/S ~ View the current settings (pandoc-view-settings)
+;; C-c/c ~ Insert a new (@)-item (pandoc-insert-@)
+;; C-c/C ~ Select and insert a (@)-label (pandoc-select-@)
+(when (load "pandoc-mode" nil t)
+  (add-hook 'markdown-mode-hook 'pandoc-mode)
+  )
