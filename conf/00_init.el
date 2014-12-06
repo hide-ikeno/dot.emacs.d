@@ -93,7 +93,7 @@
 ;; C-m newline-and-indent (<= newline)
 (global-set-key (kbd "C-m") 'newline-and-indent)
 ;; C-t other-window (<= transpose-chars)
-(global-set-key (kbd "C-t") 'other-window)
+;; (global-set-key (kbd "C-t") 'other-window)
 
 ;; M-?, [f1]: help-for-help
 (global-set-key (kbd "M-?") 'help-for-help)
