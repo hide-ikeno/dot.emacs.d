@@ -1,4 +1,4 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-unix; indent-tabs-mode: nil; -*-
+;;; -*- mode: lisp-interaction; coding: utf-8-unix; indent-tabs-mode: nil; -*-
 ;;;
 ;;; File: ~/.emacs.d/conf/50_flycheck.el
 ;;; Description: Customize flycheck

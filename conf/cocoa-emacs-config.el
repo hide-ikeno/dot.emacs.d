@@ -1,4 +1,4 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-unix -*-;;
+;;; -*- mode: lisp-interaction; coding: utf-8-unix; indent-tabs-mode: nil; -*-
 ;;;
 ;;; File: ~/.emacs.d/cocoa-emacs-cofig.el
 ;;; Description: Setup file for GNU Emacs on Mac OSX

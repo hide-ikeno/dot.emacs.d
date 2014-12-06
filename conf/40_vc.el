@@ -1,7 +1,9 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-unix; indent-tabs-mode: nil; -*-
+;;; -*- mode: lisp-interaction; coding: utf-8-unix; indent-tabs-mode: nil; -*-
 ;;;
 ;;; File: ~/.emacs.d/conf/40_vc.el
 ;;; Description: Customize VC (version control)
+;;;
+;;; Code:
 ;;;
 
 ;;;=============================================================================
