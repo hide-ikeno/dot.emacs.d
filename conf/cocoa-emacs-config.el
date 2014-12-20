@@ -1,7 +1,7 @@
 ;;; -*- mode: lisp-interaction; coding: utf-8-unix; indent-tabs-mode: nil; -*-
 ;;;
 ;;; File: ~/.emacs.d/cocoa-emacs-cofig.el
-;;; Description: Setup file for GNU Emacs on Mac OSX
+;;; Description: Setup file for GNU Emacs on Mac OS X
 ;;;
 
 ;; Change modifier keys
@@ -12,21 +12,14 @@
   )
 
 ;; Font
-;; (create-fontset-from-ascii-font "Monaco-14:weight=normal:slant=normal" nil "monacomarugo")
-;; (set-fontset-font "fontset-monacomarugo"
-;;                   'unicode
-;;                   (font-spec :family "Hiragino Maru Gothic ProN" :size 16)
-;;                   nil
-;;                   'append)
-;; (add-to-list 'default-frame-alist '(font . "fontset-monacomarugo"))
 
 (set-face-attribute 'default nil
                     :family "Ricty"
                     :height 165)
 (set-fontset-font nil 'unicode
-				  (font-spec :family "Ricty"))
+                  (font-spec :family "Ricty"))
 
-(modify-all-frames-parameters (list (cons 'alpha  '(85 70 50 30))))
+(modify-all-frames-parameters (list (cons 'alpha  '(95 80 50 30))))
 
 ;; avoid hiding with M-h
 (setq mac-pass-command-to-system nil)

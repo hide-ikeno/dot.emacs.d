@@ -7,9 +7,14 @@
 
 (el-get 'sync '(flycheck flycheck-pos-tip))
 
-(when (require 'flycheck nil t)
-  (add-hook 'after-init-hook #'global-flycheck-mode)
+(use-package flycheck
+  :config
   ;; C/C++
-  (setq flycheck-clang-language-standard "c++11")
-  (setq flycheck-clang-standard-library "libc++")
+  (add-hook 'c++-mode-hook
+            (lambda ()
+              (setq flycheck-clang-language-standard "c++11")
+              (setq flycheck-clang-standard-library "libc++")
+              (setq flycheck-clang-include-path
+                    (list ("/usr/local/include/")))))
+  (add-hook 'after-init-hook #'global-flycheck-mode)
   )

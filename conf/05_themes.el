@@ -4,16 +4,28 @@
 ;;; Description: Customize Emacs themes
 ;;;
 
-(el-get 'sync '(color-theme-solarized))
+(el-get 'sync
+        '(color-theme-solarized
+          birds-of-paradise-plus-theme
+          darkmine-theme
+          dream-theme
+          color-theme-zenburn))
+
+(load-theme 'zenburn)
+;; (when (require 'atom-dark-theme nil t)
+;;   (load-theme 'atom-dark)
+;;   )
+
+;; (load-theme 'darkmine)
 
 ;; (load-theme 'solarized-light t)
-(load-theme 'solarized-dark t)
+;; (load-theme 'solarized-dark t)
 
-;; Change light/dark themes interactively
-(defun light-theme ()
-  (interactive)
-  (load-theme 'solarized-light t))
+;; ;; Change light/dark themes interactively
+;; (defun light-theme ()
+;;   (interactive)
+;;   (load-theme 'solarized-light t))
 
-(defun dark-theme ()
-  (interactive)
-  (load-theme 'solarized-dark t))
+;; (defun dark-theme ()
+;;   (interactive)
+;;   (load-theme 'solarized-dark t))

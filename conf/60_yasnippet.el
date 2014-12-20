@@ -6,13 +6,13 @@
 
 (el-get 'sync '(yasnippet))
 
-(when (require 'yasnippet nil t)
+(use-package yasnippet
   (setq yas-snippet-dirs
-        '("~/.emacs.d/local/yasnippet/snippets" ;; Location of private snippets
-          "~/.emacs.d/el-get/yasnippet/snippets" ;; Location of default snippets
-          ))
+        ;; Location of private snippets
+        '("~/.emacs.d/local/yasnippet/snippets"
+          ;; Location of default snippets
+          "~/.emacs.d/el-get/yasnippet/snippets"))
   (yas-global-mode 1)
-
   (custom-set-variables '(yas-trigger-key "TAB"))
   )
 

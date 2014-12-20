@@ -15,10 +15,10 @@
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path "/usr/texbin")
 
-;;;
+;;;=============================================================================
 ;;; el-get -- install and manage elisp code for Emacs
 ;;;   <https://github.com/dimitri/el-get>
-;;;
+;;;=============================================================================
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 ;; Use master branch (developper edition of el-get)
@@ -32,12 +32,42 @@
 ;; Local folder for my own recipes
 (add-to-list 'el-get-recipe-path "~/.emacs.d/local/el-get/recipes")
 
-;;;
-;;; init-loader -- split Emacs init file
-;;; <https://gist.github.com/1021706>
-;;;
-(el-get 'sync '(init-loader))
-(require 'init-loader)
-;; init-loader-directory [default "~/.emacs.d/inits"]
-(setq init-loader-directory "~/.emacs.d/conf") 
-(init-loader-load init-loader-directory)
+;; --- Install packages
+(el-get 'sync '(init-loader use-package))
+
+;;;=============================================================================
+;;; user-package -- A use-package declaration for simplifying your .emacs
+;;;   <https://github.com/jwiegley/use-package>
+;;;=============================================================================
+(require 'use-package)
+
+;;;=============================================================================
+;;; init-loader -- loader for configuration files
+;;;    <https://github.com/emacs-jp/init-loader>
+;;;=============================================================================
+
+(use-package init-loader
+  :config
+  (setq init-loader-directory "~/.emacs.d/conf")
+  (init-loader-load init-loader-directory)
+  )
+
+;;;=============================================================================
+;;; Custom
+;;;=============================================================================
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+	("e4e97731f52a5237f37ceb2423cb327778c7d3af7dc831788473d4a76bcc9760" default)))
+ '(yas-trigger-key "TAB"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

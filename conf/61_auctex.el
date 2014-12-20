@@ -4,7 +4,11 @@
 ;;; Description: Customize AUCTeX mode
 ;;;
 
+(el-get 'sync '(auctex company-auctex))
 
+;;;
+;;; AucTeX
+;;;
 (when (load "auctex.el" nil t t)
   (load "preview-latex.el" nil t t)
 
@@ -82,3 +86,8 @@
   ;;
   (setq kinsoku-limit 10)
   )
+
+;;;
+;;; company-auctex -- company backend for AucTeX
+;;;
+(use-package company-auctex)

@@ -28,7 +28,6 @@
   ;; (setq org-todo-keywords
   ;;       ;; TASK     -- TODO (Project単位)
   ;;       ;; NEXT     -- 次に(ただちに)やるべきタスク
-        
   ;;       ;; WAITING  -- 他人からの応答待ち，行動できる状態まで待機
   ;;       ;; DONE     -- 完了
   ;;       ;; SOMEDAY  -- いつかやる

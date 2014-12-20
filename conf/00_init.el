@@ -1,4 +1,4 @@
-;;; -*- mode: emacs-lisp; coding: utf-8-unix; indent-tabs-mode: nil; -*-
+;;; -*- mode: lisp-interaction; coding: utf-8-unix; indent-tabs-mode: nil; -*-
 ;;;
 ;;; File: ~/.emacs.d/conf/00_init.el
 ;;; Description: Basic customization
@@ -56,33 +56,6 @@
 ;;; 行頭の空白を段落の区切りとして認識させる
 (setq paragraph-start '"^\\([ 　・○<\t\n\f]\\|(?[0-9a-zA-Z]+)\\)")
 
-;;; Inhibit startup message
-(setq inhibit-startup-screen t)
-
-;;; Inhibit toolbar
-(tool-bar-mode 0)
-
-;;; Inhibit scroll-bar
-(scroll-bar-mode 0)
-
-;;; Inhibit menu bar
-(menu-bar-mode 0)
-
-;;; Display file size on modeline
-(size-indication-mode t)
-
-;;; Display clock on modeline
-(setq display-time-day-and-date t)
-(display-time)
-
-;;; Show line numbers and column numbers
-(line-number-mode t)                    ; show line number on modeline
-(column-number-mode t)                  ; show column number on modeline
-(if (require 'linum nil t)
-    (global-linum-mode t))
-(if (require 'ruler-mode nil t)
-    (ruler-mode t))
-
 ;;==============================================================================
 ;; Customize some default keybinds
 ;;==============================================================================
@@ -108,58 +81,6 @@
 
 ;;; 日本語でインクリメンタルサーチ
 (define-key isearch-mode-map (kbd "C-k") 'isearch-edit-string)
-
-;;==============================================================================
-;; Customize basic packages
-;;==============================================================================
-
-;;; uniquify -- 同名バッファを分かり易く
-(require 'uniquify)
-
-;;; filecache
-(when (require 'filecache nil t)
-  (file-cache-add-directory-list
-   (list "~"
-         "~/bin"
-         "~/program/"
-         ))
-  (define-key minibuffer-local-completion-map
-    "\C-c\C-i" 'file-cache-minibuffer-complete))
-
-;; 対応する括弧の強調
-(show-paren-mode t)
-(setq show-paren-style 'mixed)
-(setq show-paren-style 'expression)
-;; ;; マッチした場合の色
-;; (set-face-background 'show-paren-match-face "dodger blue")
-;; (set-face-foreground 'show-paren-match-face "white")
-;; ;; マッチしていない場合の色
-;; (set-face-background 'show-paren-mismatch-face "Red")
-;; (set-face-foreground 'show-paren-mismatch-face "black")
-
-;;; whitespace -- 空白や長すぎる行を視覚化する
-(require 'whitespace)
-(setq whitespace-line-column 80)
-(setq whitespace-style '(face           ; faceを使って視覚化する
-                         tabs
-                         tab-mark
-                         spaces
-                         space-mark
-                         trailing         ; 行末の空白を対象とする
-                         lines-tail       ; 長すぎる行のうち
-                                        ; whitespace-line-column
-                                        ; 以降のみを対象とする
-                         space-before-tab ; タブの前にあるスペースを対象とする
-                         space-after-tab  ; タブの後にあるスペースを対象とす
-                         ))
-;; 全角スペースを視覚化
-(setq whitespace-space-regexp "\\(\x3000+\\)")
-(setq whitespace-display-mappings
-      '((space-mark ?\x3000 [?\□])
-        (tab-mark   ?\t   [?\xBB ?\t])
-        ))
-;; デフォルトで視覚化を有効にする。
-(global-whitespace-mode 1)
 
 ;;; CUA mode -- 矩形選択用
 (cua-mode t)

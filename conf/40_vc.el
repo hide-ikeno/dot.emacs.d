@@ -6,6 +6,9 @@
 ;;; Code:
 ;;;
 
+;; install external packages
+(el-get 'sync '(gist git-gutter-fringe+ magit))
+
 ;;;=============================================================================
 ;;; VC -- Emacs version control
 ;;;=============================================================================
@@ -23,11 +26,10 @@
 ;;;=============================================================================
 ;;; Git customization
 ;;;=============================================================================
-(el-get 'sync '(gist git-gutter-fringe magit))
 
-(require 'magit nil t)
-(when (require 'git-gutter-fringe nil t)
-  (git-gutter-mode)
-  )
+(use-package magit)
+(use-package git-gutter-fringe+
+  :config
+  (global-git-gutter+-mode))
 
-(require 'gist nil t)
+(use-package gist)
