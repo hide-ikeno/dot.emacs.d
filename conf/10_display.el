@@ -5,7 +5,7 @@
 ;;;
 
 ;; install external packages
-(el-get 'sync '(visual-regexp rainbow-delimiters anzu))
+(el-get 'sync '(visual-regexp rainbow-delimiters anzu volatile-highlights))
 
 ;;;=============================================================================
 ;;; Modeline & frame customization
@@ -106,3 +106,12 @@
 ;;;
 (use-package anzu
   :config (global-anzu-mode t))
+
+;;;=============================================================================
+;;; volatile-highlights -- Minor mode for visual feedback on some operations in
+;;; Emacs
+;;;=============================================================================
+(use-package volatile-highlights
+  :config
+  (volatile-highlights-mode t)
+  )
