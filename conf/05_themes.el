@@ -11,12 +11,11 @@
           dream-theme
           color-theme-zenburn))
 
-(load-theme 'zenburn)
+(load-theme 'dream t)
+
 ;; (when (require 'atom-dark-theme nil t)
 ;;   (load-theme 'atom-dark)
 ;;   )
-
-;; (load-theme 'darkmine)
 
 ;; (load-theme 'solarized-light t)
 ;; (load-theme 'solarized-dark t)

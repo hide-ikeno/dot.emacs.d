@@ -1,14 +1,0 @@
-;; Emacs-W3 HTTP cookies file
-;; Automatically generated file!!! DO NOT EDIT!!!
-
-(setq url-cookie-storage
- '(("www.meadowy.org"
-  [url-cookie "trac_session" "59cc8b51311af5c988ba191e" "04-Jun-2014 04:17:46.00 GMT" "/meadow/netinstall" "www.meadowy.org" nil]))
-)
-(setq url-cookie-secure-storage
- 'nil)
-
-;; Local Variables:
-;; version-control: never
-;; no-byte-compile: t
-;; End:
