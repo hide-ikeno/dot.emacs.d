@@ -5,18 +5,23 @@
 ;;;
 ;;; Code:
 
-(el-get 'sync '(visual-regexp smartrep multiple-cursors))
+;; (el-get 'sync '(visual-regexp smartrep multiple-cursors))
+(el-get 'sync '(visual-regexp wgrep))
 
-;;;============================================================================
-;;; visual-regexp
-;;;   A regexp/replace command for Emacs with interactive visual feedback
-;;;   <https://github.com/benma/visual-regexp.el>
-;;;============================================================================
+;;;=============================================================================
+;;; visual-regexp --- A regexp/replace command for Emacs with interactive
+;;; visual feedback <https://github.com/benma/visual-regexp.el>
+;;;=============================================================================
 (when (require 'visual-regexp nil t)
   (global-set-key (kbd "M-%") 'vr/query-replace)
   )
 
-;;;============================================================================
+;;;=============================================================================
+;;; wgrep --- Writable grep buffer and apply the changes to files
+;;;=============================================================================
+(use-package wgrep)
+
+;;;=============================================================================
 ;;; smartrep
 ;;;   <http://sheephead.homelinux.org/2011/12/19/6930/>
 ;;; multiple-cursors -- Multiple cursors for Emacs
