@@ -5,7 +5,9 @@
 ;;;
 
 (el-get 'sync '(helm
+                helm-ag
                 helm-c-yasnippet
+                helm-company
                 helm-descbinds
                 helm-gist
                 helm-gtags
@@ -13,99 +15,106 @@
                 helm-swoop
                 helm-migemo))
 
-(when (require 'helm-config nil t)
-  (require 'helm-command nil t)
+;;;=============================================================================
+;;; helm --- Emacs incremental and narrowing framework
+;;;=============================================================================
+(use-package helm-config
+  :config
   (setq helm-idle-delay 0.1)
   (setq helm-input-idle-delay 0)
   (setq helm-candidate-number-limit 300)
   (setq helm-samewindow nil)
   (setq helm-quick-update t)
-
   ;; Change face for dark color theme
   (set-face-background 'helm-selection "blue")
-
   ;; Keybindings
-
   (defun helm-my-buffers ()
     (interactive)
-    (helm-other-buffer '(helm-c-source-buffers-list
-                         helm-c-source-files-in-current-dir
-                         helm-c-source-recentf
-                         helm-c-source-buffer-not-found)
+    (helm-other-buffer '(helm-source-buffers-list
+                         helm-source-files-in-current-dir
+                         helm-source-recentf
+                         helm-source-buffer-not-found)
                        "*helm-my-buffers*"))
 
-  ;; (defun helm-my-files-history ()
-  ;;   (interactive)
-  ;;   (helm-other-buffer '(helm-c-source-recentf
-  ;;                        helm-c-source-file-cache
-  ;;                        helm-c-source-buffer-not-found)
-  ;;                      "*helm-my-files-history*"))
-
-  (global-set-key (kbd "C-;") 'helm-my-buffers)
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-  (global-set-key (kbd "C-M-z") 'helm-resume)
-  (global-set-key (kbd "C-x C-f") 'helm-find-files)
-  (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-  (global-set-key (kbd "C-c i") 'helm-imenu)
-  (define-key helm-map (kbd "C-M-n") 'helm-next-source)
-  (define-key helm-map (kbd "C-M-p") 'helm-previous-source)
+  (bind-keys :map helm-map
+             ("C-M-n" . 'helm-next-source)
+             ("C-M-p" . 'helm-previous-source))
   (helm-mode 1)
 
-  ;; ;; helm-occur
-  ;; (global-set-key (kbd "M-o") 'helm-occur)
-  ;; ;; isearchからhelm-occurを起動
-  ;; (define-key isearch-mode-map (kbd "C-o") 'helm-occur-from-isearch)
-  ;; ;; helm-occurからall-extに受け渡し
-  ;; (define-key helm-map (kbd "C-c C-a") 'all-from-helm-occur)
+  :bind (("C-;"     . helm-my-buffers)
+         ("M-x"     . helm-M-x)
+         ("M-y"     . helm-show-kill-ring)
+         ("C-M-z"   . helm-resume)
+         ("C-x C-f" . helm-find-files)
+         ("C-x C-b" . helm-buffers-list)
+         ("C-c i"   . helm-imenu))
+  )
 
-  ;; helm-descbinds
-  (when (require 'helm-descbinds nil t)
-    (helm-descbinds-mode))
+;;;=============================================================================
+;;; helm-ag.el --- the silver searcher with helm interface
+;;;=============================================================================
+(use-package helm-ag)
 
-  ;; helm-ls-git
-  (require 'helm-gist nil t)
-  (when (require 'helm-ls-git nil t)
-    (global-set-key (kbd "C-x C-g") 'helm-ls-git-ls)
-    )
+;;;=============================================================================
+;;; helm-descbinds.el --- Yet Another `describe-bindings' with `helm'.
+;;;=============================================================================
+(use-package helm-descbinds
+  :config  (helm-descbinds-mode))
 
-  ;; helm-c-yasnippet
-  (when (require 'helm-c-yasnippet)
-    (setq helm-c-yas-space-match-any-greedy t) ;; [default: nil]
-    ;; (global-set-key (kbd "C-c y") 'helm-c-yas-complete)
-    (define-key yas-minor-mode-map (kbd "C-c y") 'helm-c-yas-complete)
-    )
+;;;=============================================================================
+;;; helm-ls-git --- list git files using helm interactive
+;;;=============================================================================
+(use-package helm-ls-git
+  :bind (("C-x C-g" . helm-ls-git-ls)))
 
-  ;; helm-ls-git
-  (require 'helm-gist nil t)
-  (when (require 'helm-ls-git nil t)
-    (global-set-key (kbd "C-x C-g") 'helm-ls-git-ls)
-    )
+;;;=============================================================================
+;;; helm-c-yasnippet --- helm sources for yasnippet
+;;;=============================================================================
+(use-package helm-c-yasnippet
+  :config
+  (setq helm-c-yas-space-match-any-greedy t) ;; [default: nil]
+  ;; (global-set-key (kbd "C-c y") 'helm-c-yas-complete)
+  (bind-keys :map yas-minor-mode-map
+             ("C-c y" . 'helm-c-yas-complete))
+  )
 
-  ;; helm-gtags
-  (when (require 'helm-gtags nil t)
-    (setq helm-gtags-auto-update t)
-    (add-hook 'helm-gtags-mode-hook
-              '(lambda ()
-                 (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
-                 (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
-                 (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
-                 (local-set-key (kbd "C-t") 'helm-gtags-pop-stack)
-                 (local-set-key (kbd "C-c C-f") 'helm-gtags-find-files)))
-    )
-
-  ;; ;; helm-migemo
-  ;; (when (require 'helm-migemo nil t)
-  ;;   (setq helm-use-migemo t)
-  ;;   )
-
-  ;; ;; helm-project
-  ;; (when  (require 'helm-project nil t)
-  ;;    (global-set-key (kbd "C-c C-f") 'helm-project))
-
+;;;=============================================================================
+;;; helm-gtags --- helm interface for gtags
+;;;=============================================================================
+(use-package helm-gtags
+  :config
+  (setq helm-gtags-auto-update t)
+  (add-hook 'helm-gtags-mode-hook
+            '(lambda ()
+               (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
+               (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
+               (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
+               (local-set-key (kbd "C-t") 'helm-gtags-pop-stack)
+               (local-set-key (kbd "C-c C-f") 'helm-gtags-find-files)))
   )
 
 
+;;;=============================================================================
+;;; helm-company --- Helm interface for company-mode
+;;;=============================================================================
+(use-package helm-company
+  :config
+  (bind-keys :map company-mode-map   ("C-:" . 'helm-company))
+  (bind-keys :map company-active-map ("C-:" . 'helm-company))
+  )
+
+;; ;; helm-migemo
+;; (when (require 'helm-migemo nil t)
+;;   (setq helm-use-migemo t)
+;;   )
+
+;; ;; helm-project
+;; (when  (require 'helm-project nil t)
+;;    (global-set-key (kbd "C-c C-f") 'helm-project))
+
+;;;=============================================================================
+;;; helm-swoop --- Efficiently hopping squeezed lines powered by helm interface
+;;;=============================================================================
 (use-package helm-swoop
   :config
   ;; Save buffer when helm-multi-swoop-edit complete
