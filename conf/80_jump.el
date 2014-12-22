@@ -17,7 +17,7 @@
 ;;;=============================================================================
 (use-package ace-isearch
   :config
-  (setq ace-isearch-input-idle-delay 0.2)
+  (setq ace-isearch-input-idle-delay 0.5)
   (global-ace-isearch-mode t)
   )
 

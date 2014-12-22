@@ -1,0 +1,134 @@
+;;; -*- mode: lisp-interaction; coding: utf-8-unix -*-;;
+;;;
+;;; File: ~/.emacs.d/init.el
+;;; Description: Setup file for GNU Emacs.
+;;;
+
+;; Start Emacs server
+(server-start)
+
+;; Set load-path
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
+
+;; exec-path
+;; (add-to-list 'exec-path (expand-file-name "~/.emacs.d/bin/"))
+(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/usr/texbin")
+
+
+;;;=============================================================================
+;;; package -- Emacs lisp package manager
+;;;=============================================================================
+(package-initialize)
+;; Add MELPA repository
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+;;;=============================================================================
+;;; Quelpa -- Build and install your Emacs Lisp packages on-the-fly and directly
+;;;           from source.  <https://github.com/quelpa/quelpa>
+;;;=============================================================================
+;; *** Setup quelpa with self-upgrade automatically
+;; (if (require 'quelpa nil t)
+;;     (quelpa-self-upgrade)
+;;   (with-temp-buffer
+;;     (url-insert-file-contents "https://raw.github.com/quelpa/quelpa/master/bootstrap.el")
+;;     (eval-buffer)))
+;; *** Disable quelpa-self-upgrade automatically
+(setq quelpa-update-melpa-p nil)
+(require 'quelpa)
+
+;; --- Install themes
+(quelpa 'solarized-theme)
+(quelpa 'anti-zenburn-theme)
+(quelpa 'zenburn-theme)
+
+;; --- Install packages
+
+(quelpa 'ac-dabbrev)
+(quelpa 'ac-math)
+(quelpa 'ac-python)
+(quelpa 'auctex)
+(quelpa 'auto-complete)
+(quelpa 'auto-complete-chunk)
+;; (quelpa 'auto-complete-clang
+(quelpa 'auto-complete-css)
+(quelpa 'auto-complete-emacs-lisp)
+(quelpa 'auto-complete-etags)
+(quelpa 'auto-complete-extension)
+(quelpa 'auto-complete-latex)
+(quelpa 'auto-complete-rst)
+(quelpa 'auto-complete-ruby)
+(quelpa 'bm)
+(quelpa 'cmake-mode)
+(quelpa 'ddskk)
+(quelpa 'dired+)
+(quelpa 'doxymacs)
+(quelpa 'flycheck)
+(quelpa 'flycheck-pos-tip)
+(quelpa 'gist)
+(quelpa 'git-gutter-fringe+)
+(quelpa 'helm)
+(quelpa 'helm-c-yasnippet)
+(quelpa 'helm-descbinds)
+(quelpa 'helm-gist)
+(quelpa 'helm-gtags)
+(quelpa 'helm-ls-git)
+(quelpa 'helm-migemo)
+(quelpa 'init-loader)
+(quelpa 'magit)
+(quelpa 'markdown-mode)
+(quelpa 'pandoc-mode)
+(quelpa 'recentf-ext)
+(quelpa 'sr-speedbar)
+(quelpa 'use-package)
+(quelpa 'japanese-holidays)
+(quelpa 'visual-regexp)
+(quelpa 'viewer)
+(quelpa 'yaml-mode)
+(quelpa 'yasnippet)
+
+;;;=============================================================================
+;;; user-package -- A use-package declaration for simplifying your .emacs
+;;;   <https://github.com/jwiegley/use-package>
+;;;=============================================================================
+
+(require 'use-package)
+
+;;;=============================================================================
+;;; init-loader -- loader for configuration files
+;;;    <https://github.com/emacs-jp/init-loader>
+;;;=============================================================================
+
+(use-package init-loader
+  :config
+  (setq init-loader-directory "~/.emacs.d/inits")
+  (init-loader-load init-loader-directory)
+  )
+
+;;;
+;;; el-get -- install and manage elisp code for Emacs
+;;;   <https://github.com/dimitri/el-get>
+;;;
+
+;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;; ;; Use master branch (developper edition of el-get)
+;; (unless (require 'el-get nil 'noerror)
+;;   (with-current-buffer
+;;       (url-retrieve-synchronously
+;;        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+;;     (let (el-get-master-branch)
+;;       (goto-char (point-max))
+;;       (eval-print-last-sexp))))
+;; ;; Local folder for my own recipes
+;; (add-to-list 'el-get-recipe-path "~/.emacs.d/local/el-get/recipes")
+
+;; ;;;
+;; ;;; init-loader -- split Emacs init file
+;; ;;; <https://gist.github.com/1021706>
+;; ;;;
+;; (el-get 'sync '(init-loader))
+;; (require 'init-loader)
+;; ;; init-loader-directory [default "~/.emacs.d/inits"]
+;; (setq init-loader-directory "~/.emacs.d/conf") 
+;; (init-loader-load init-loader-directory)
