@@ -65,6 +65,10 @@
 
 ;; C-m newline-and-indent (<= newline)
 (global-set-key (kbd "C-m") 'newline-and-indent)
+
+;; C-l recenter-top-bottom
+(global-set-key (kbd "C-l") 'recenter-top-bottom)
+
 ;; C-t other-window (<= transpose-chars)
 ;; (global-set-key (kbd "C-t") 'other-window)
 

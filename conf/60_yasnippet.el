@@ -16,3 +16,4 @@
   (custom-set-variables '(yas-trigger-key "TAB"))
   )
 
+(use-package company-yasnippet)

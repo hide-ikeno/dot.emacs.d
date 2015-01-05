@@ -5,7 +5,7 @@
 ;;;
 ;;; Code:
 
-(el-get 'sync '(company-c-headers))
+(el-get 'sync '(company-c-headers google-c-style))
 
 ;;;=============================================================================
 ;;; cc-mode

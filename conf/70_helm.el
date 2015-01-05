@@ -58,7 +58,7 @@
 ;;;=============================================================================
 ;;; wgrep-helm --- helm interface for wgrep (bundled in wgrep)
 ;;;=============================================================================
-(use-package wdired-helm)
+(use-package wgrep-helm)
 
 ;;;=============================================================================
 ;;; helm-descbinds.el --- Yet Another `describe-bindings' with `helm'.
