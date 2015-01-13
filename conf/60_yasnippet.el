@@ -7,6 +7,7 @@
 (el-get 'sync '(yasnippet))
 
 (use-package yasnippet
+  :config
   (setq yas-snippet-dirs
         ;; Location of private snippets
         '("~/.emacs.d/local/yasnippet/snippets"
