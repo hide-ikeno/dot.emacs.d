@@ -2,9 +2,12 @@
 *~
 *.elc
 el-get
+elpa
 auto-save-list
 ac-comphist.dat
 bookmarks
+irony
+tramp
 .emacs-places
 .recentf
 local/clang/stdafx.pch
