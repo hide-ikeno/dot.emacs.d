@@ -5,7 +5,7 @@
 ;;;
 
 ;; install external packages
-(el-get 'sync '(bm viewer))
+(el-get 'sync '(bm viewer outline-magic))
 
 
 ;;;=============================================================================
@@ -54,3 +54,7 @@
   (viewer-change-modeline-color-setup)
   )
 
+;;;=============================================================================
+;;; outline-magic.el -- outline mode extensions for Emacs
+;;;=============================================================================
+(use-package outline-magic)

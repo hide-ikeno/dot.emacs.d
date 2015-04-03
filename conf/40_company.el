@@ -6,7 +6,7 @@
 ;;; Code:
 ;;;
 
-(el-get 'sync '(company))
+(el-get 'sync '(company company-c-headers))
 
 ;;;=============================================================================
 ;;; company-mode -- Modular in-buffer completion framework for Emacs
@@ -14,6 +14,14 @@
 (use-package company
   :config
   (add-hook 'after-init-hook 'global-company-mode)
+  )
+
+;;;=============================================================================
+;;; company-c-headers -- Company mode backend for C/C++ header files.
+;;;=============================================================================
+(use-package company-c-headers
+  :config
+  (add-to-list 'company-backends 'company-c-headers)
   )
   ;; company                      available      Modular text completion framework
   ;; company-anaconda             available      Anaconda backend for company-mode.

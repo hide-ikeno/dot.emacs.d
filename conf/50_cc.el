@@ -5,7 +5,7 @@
 ;;;
 ;;; Code:
 
-(el-get 'sync '(company-c-headers google-c-style))
+(el-get 'sync '(google-c-style))
 
 ;;;=============================================================================
 ;;; cc-mode
@@ -206,13 +206,6 @@
                     ))
              ) t)
 
-;;;=============================================================================
-;;; company-c-headers -- Company mode backend for C/C++ header files.
-;;;=============================================================================
-(use-package company-c-headers
-  :config
-  (add-to-list 'company-backends 'company-c-headers)
-  )
 
 ;;;=============================================================================
 ;;; Emacs Clang Completion Async
