@@ -10,7 +10,7 @@
                 helm-company
                 helm-descbinds
                 helm-gist
-                ggtags
+                ;; ggtags
                 helm-gtags
                 helm-ls-git
                 helm-swoop
@@ -38,8 +38,8 @@
                        "*helm-my-buffers*"))
 
   (bind-keys :map helm-map
-             ("C-M-n" . 'helm-next-source)
-             ("C-M-p" . 'helm-previous-source))
+             ("C-M-n" . helm-next-source)
+             ("C-M-p" . helm-previous-source))
   (helm-mode 1)
 
   :bind (("C-;"     . helm-my-buffers)
@@ -81,29 +81,29 @@
   (setq helm-c-yas-space-match-any-greedy t) ;; [default: nil]
   ;; (global-set-key (kbd "C-c y") 'helm-c-yas-complete)
   (bind-keys :map yas-minor-mode-map
-             ("C-c y" . 'helm-c-yas-complete))
+             ("C-c y" . helm-c-yas-complete))
   )
 
 ;;;=============================================================================
 ;;; ggtags --- Emacs frontend to GNU Global source code tagging system
 ;;;            This package is utilized in conjunction with helm-gtags
 ;;;=============================================================================
-(use-package ggtags
-  :config
-  (add-hook 'c-mode-common-hook
-            (lambda ()
-              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
-                (ggtags-mode 1))))
-  ;; Add keybinds
-  (bind-keys :map ggtags-mode-map
-             ("C-c g s" . 'ggtags-find-other-symbol)
-             ("C-c g h" . 'ggtags-view-tag-history)
-             ("C-c g r" . 'ggtags-find-reference)
-             ("C-c g f" . 'ggtags-find-file)
-             ("C-c g c" . 'ggtags-create-tags)
-             ("C-c g u" . 'ggtags-update-tags)
-             ;; ("M-,"     . 'pop-tag-mark))
-  ))
+;; (use-package ggtags
+;;   :config
+;;   (add-hook 'c-mode-common-hook
+;;             (lambda ()
+;;               (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+;;                 (ggtags-mode 1))))
+;;   ;; Add keybinds
+;;   (bind-keys :map ggtags-mode-map
+;;              ("C-c g s" . ggtags-find-other-symbol)
+;;              ("C-c g h" . ggtags-view-tag-history)
+;;              ("C-c g r" . ggtags-find-reference)
+;;              ("C-c g f" . ggtags-find-file)
+;;              ("C-c g c" . ggtags-create-tags)
+;;              ("C-c g u" . ggtags-update-tags)
+;;              ;; ("M-,"     . 'pop-tag-mark))
+;;   ))
 
 ;;;=============================================================================
 ;;; helm-gtags --- helm interface for gtags
@@ -124,12 +124,12 @@
   (add-hook 'asm-mode-hook 'helm-gtags-mode)
   ;; Add keybinds
   (bind-keys :map helm-gtags-mode-map
-             ("C-c g a" . 'helm-gtags-tags-in-this-function)
-             ("M-s"     . 'helm-gtags-select)
-             ("M-."     . 'helm-gtags-dwim)
-             ("M-,"     . 'helm-gtags-pop-stack)
-             ("C-c <"   . 'helm-gtags-previous-history)
-             ("C-c >"   . 'helm-gtags-next-history))
+             ("C-c g a" . helm-gtags-tags-in-this-function)
+             ("M-s"     . helm-gtags-select)
+             ("M-."     . helm-gtags-dwim)
+             ("M-,"     . helm-gtags-pop-stack)
+             ("C-c <"   . helm-gtags-previous-history)
+             ("C-c >"   . helm-gtags-next-history))
   )
 
 
@@ -138,8 +138,8 @@
 ;;;=============================================================================
 (use-package helm-company
   :config
-  (bind-keys :map company-mode-map   ("C-:" . 'helm-company))
-  (bind-keys :map company-active-map ("C-:" . 'helm-company))
+  (bind-keys :map company-mode-map   ("C-:" . helm-company))
+  (bind-keys :map company-active-map ("C-:" . helm-company))
   )
 
 ;; ;; helm-migemo
@@ -172,10 +172,10 @@
 
   ;; When doing isearch, hand the word over to helm-swoop
   (bind-keys :map isearch-mode-map
-             ("M-i" . 'helm-swoop-from-isearch))
+             ("M-i" . helm-swoop-from-isearch))
   ;; From helm-swoop to helm-multi-swoop-all
   (bind-keys :map helm-swoop-map
-             ("M-i" . 'helm-multi-swoop-all-from-helm-swoop)
-             ("C-s" . 'swoop-action-goto-line-next)
-             ("C-r" . 'swoop-action-goto-line-prev))
+             ("M-i" . helm-multi-swoop-all-from-helm-swoop)
+             ("C-s" . swoop-action-goto-line-next)
+             ("C-r" . swoop-action-goto-line-prev))
   )
