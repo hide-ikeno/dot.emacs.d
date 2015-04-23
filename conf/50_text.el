@@ -7,7 +7,7 @@
 ;;;
 
 ;; extern packages
-(el-get 'sync '(yaml-mode markdown-mode pandoc-mode rst-mode))
+(el-get 'sync '(yaml-mode markdown-mode pandoc-mode rst-mode hydra))
 
 ;;;=============================================================================
 ;;; YAML mode -- YAML Ain't Markup Language
