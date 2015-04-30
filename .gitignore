@@ -10,4 +10,5 @@ irony
 tramp
 .emacs-places
 .recentf
+.python-environments
 local/clang/stdafx.pch
