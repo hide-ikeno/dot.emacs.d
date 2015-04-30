@@ -1,0 +1,42 @@
+;;; -*- mode: lisp-interaction; coding: utf-8-unix; indent-tabs-mode: nil; -*-
+;;;
+;;; File: ~/.emacs.d/conf/30_ddskk.el
+;;; Description: Japanese IME
+;;;
+
+;;; DDSKK
+(el-get-bundle ddskk)
+
+;; (when (require 'skk-autoloads nil t)
+;;   (global-set-key "\C-x\C-j" 'skk-mode)
+;;   (global-set-key "\C-xj" 'skk-auto-fill-mode)
+;;   ;;(global-set-key "\C-xt" 'skk-tutorial)
+;;   (require 'skk-leim nil t)
+;;   (setq default-input-method 'japanese-skk)
+;;   (setq skk-init-file "~/.emacs.d/.skk")
+;;   (add-hook 'isearch-mode-hook
+;;             (lambda () (and (boundp 'skk-mode) skk-mode
+;;                             (skk-isearch-mode-setup))))
+;;   (add-hook 'isearch-mode-end-hook
+;;             (lambda ()
+;;               (and (featurep 'skk-isearch) (skk-isearch-mode-cleanup))))
+;;   (setq skk-isearch-start-mode 'latin)
+;;   )
+
+(use-package skk-autoloads
+  :bind (("C-x C-j" . skk-mode)
+         ("C-x j" . skk-auto-fill-mode))
+  ;;(global-set-key "\C-xt" 'skk-tutorial)
+  :defines skk-init-file skk-isearch-start-mode
+  :config
+  (use-package skk-leim)
+  (setq default-input-method 'japanese-skk)
+  (setq skk-init-file (locate-user-emacs-file ".skk"))
+  (add-hook 'isearch-mode-hook
+            (lambda () (and (boundp 'skk-mode) skk-mode
+                            (skk-isearch-mode-setup))))
+  (add-hook 'isearch-mode-end-hook
+            (lambda ()
+              (and (featurep 'skk-isearch) (skk-isearch-mode-cleanup))))
+  (setq skk-isearch-start-mode 'latin)
+  )

@@ -4,9 +4,6 @@
 ;;; Description: Look & Feel
 ;;;
 
-;; install external packages
-(el-get 'sync '(visual-regexp rainbow-delimiters anzu volatile-highlights))
-
 ;;;=============================================================================
 ;;; Modeline & frame customization
 ;;;=============================================================================
@@ -89,14 +86,10 @@
 ;;;=============================================================================
 (use-package uniquify)
 
-;;;============================================================================
-;;; visual-regexp
-;;;   A regexp/replace command for Emacs with interactive visual feedback
-;;;   <https://github.com/benma/visual-regexp.el>
-;;;============================================================================
-(use-package visual-regexp
-  :bind ("M-%" . vr/query-replace))
-
+;;;=============================================================================
+;;; rainbow-delimiters -- Highlight brackets according to their depth
+;;;=============================================================================
+(el-get-bundle rainbow-delimiters)
 (use-package rainbow-delimiters
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
@@ -104,8 +97,11 @@
 ;;;
 ;;; anzu -- Emacs Port of anzu.vim
 ;;;
+(el-get-bundle anzu)
 (use-package anzu
-  :config (global-anzu-mode t))
+  :config
+  (global-anzu-mode t)
+  )
 
 ;;;=============================================================================
 ;;; volatile-highlights -- Minor mode for visual feedback on some operations in

@@ -11,7 +11,10 @@
 ;;;=============================================================================
 ;;; AucTeX
 ;;;=============================================================================
-(with-eval-after-load "tex-jp"
+(use-package tex-jp
+  :mode ("\\.tex\\'" . auctex-mode)
+  :commands (latex-mode LaTeX-mode plain-tex-mode)
+  :config
   (setq TeX-engine-alist
         '((pdfuptex "pdfupTeX"
                     "/usr/texbin/ptex2pdf -u -e -ot '%S %(mode)'"
@@ -95,16 +98,31 @@
                                        "/usr/bin/open -a \"Adobe Reader.app\" %s.pdf"
                                        TeX-run-discard-or-function t t :help "Run Adobe Reader")))))
 
-  ;;
-  ;; RefTeX with AUCTeX
-  ;;
-  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-  (setq reftex-plug-into-AUCTeX t)
-
+  
   ;;
   ;; kinsoku.el
   ;;
   (setq kinsoku-limit 10)
+  )
+
+;;;
+;;; RefTeX with AUCTeX
+;;;
+(use-package reftex
+  :commands (turn-on-reftex)
+  :init
+  (progn
+    (setq reftex-plug-into-AUCTeX t))
+  )
+;;;
+;;; BibTeX
+;;;
+(use-package bibtex
+  :mode ("\\.bib" . bibtex-mode)
+  :init
+  (progn
+    (setq bibtex-align-at-equal-sign t)
+    (add-hook 'bibtex-mode-hook (lambda () (set-fill-column 120))))
   )
 
 ;;;=============================================================================

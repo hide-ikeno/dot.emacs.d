@@ -4,8 +4,6 @@
 ;;; Description: Customize dired mode
 ;;;
 
-(el-get 'sync '(sr-speedbar))
-
 (require 'dired)
 (require 'dired-aux)
 
@@ -53,5 +51,12 @@
    (function dired-convert-coding-system) arg 'convert-coding-system t))
 
 
-(when (require 'sr-speedbar nil t)
-  (setq sr-speedbar-right-side nil))
+;;;-----------------------------------------------------------------------------
+;;; dired-hacks -- Collection of useful dired additions
+;;;-----------------------------------------------------------------------------
+(el-get-bundle dired-hacks)
+
+(use-package dired-filter)
+(use-package dired-subtree)
+(use-package dired-ranger)
+(use-package dired-narrow)

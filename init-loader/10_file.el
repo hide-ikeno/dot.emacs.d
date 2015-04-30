@@ -3,28 +3,41 @@
 ;;; File: ~/.emacs.d/conf/10_history.el
 ;;; Description: Customize history
 ;;;
-(el-get 'sync '(recentf-ext))
 
 ;;; 履歴数を大きくする
 (setq history-length 10000)
 
 ;;;=============================================================================
-;;; recenrf - 最近使ったファイルを記憶させる
+;;; files.el
 ;;;=============================================================================
-(require 'recentf)
-(setq recentf-save-file (expand-file-name "~/.emacs.d/.recentf"))
-(setq recentf-max-saved-items 2000)
-(recentf-mode 1)
+;; Disable automatic backup
+(setq make-backup-files nil)
+;; Disable automatic save
+(setq auto-save-default nil)
 
-;;; recentf-ext -- Extention for recentf
-(use-package recentf-ext)
+
+;;;=============================================================================
+;;; recenrf, recenrf-ext -- 最近使ったファイルを記憶させる
+;;;=============================================================================
+(el-get-bundle recentf-ext)
+
+(use-package recentf-ext
+  :config
+  (setq recentf-save-file (expand-file-name (locate-user-emacs-file ".recentf")))
+  (setq recentf-max-saved-items 2000)
+  (setq recentf-auto-cleanup 10)
+  (setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
+  (recentf-mode 1)
+  )
 
 ;;;=============================================================================
 ;;; saveplace - 前回編集していたカーソル位置を記憶
 ;;;=============================================================================
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file "~/.emacs.d/.emacs-places")
+(use-package saveplace
+  :config
+  (setq-default save-place t)
+  (setq save-place-file (locate-user-emacs-file ".emacs-places"))
+  )
 
 ;;;=============================================================================
 ;;; filecache

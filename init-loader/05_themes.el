@@ -4,15 +4,15 @@
 ;;; Description: Customize Emacs themes
 ;;;
 
-(el-get 'sync
-        '(color-theme-solarized
-          birds-of-paradise-plus-theme
-          darkmine-theme
-          dream-theme
-          color-theme-zenburn))
+(el-get-bundle color-theme-solarized)
+(el-get-bundle birds-of-paradise-plus-theme)
+(el-get-bundle darkmine-theme)
+(el-get-bundle dream-theme)
+(el-get-bundle color-theme-zenburn)
 
 (load-theme 'dream t)
 
+;; (load-theme 'atom-dark t)
 ;; (when (require 'atom-dark-theme nil t)
 ;;   (load-theme 'atom-dark)
 ;;   )
