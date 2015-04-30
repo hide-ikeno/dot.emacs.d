@@ -5,43 +5,34 @@
 ;;;
 
 (el-get-bundle anzu)
-(el-get-bundle dired-hacks)
-(el-get-bundle recentf-ext)
-(el-get-bundle rainbow-delimiters)
-
+(el-get-bundle bm)
+(el-get-bundle dash)
 (el-get-bundle ddskk)
-(el-get-bundle migemo)
+(el-get-bundle dired-hacks)
+(el-get-bundle hydra)
 (el-get-bundle japanese-holidays)
-
+(el-get-bundle migemo)
+(el-get-bundle rainbow-delimiters)
+(el-get-bundle recentf-ext)
+(el-get-bundle switch-window)
 (el-get-bundle undo-tree)
+(el-get-bundle viewer)
 (el-get-bundle visual-regexp)
 
-(el-get-bundle bm)
-(el-get-bundle viewer)
-
-(el-get-bundle hydra)
-(el-get-bundle dash)
-
-(el-get-bundle switch-window)
-(el-get-bundle ace-jump-mode)
-(el-get-bundle ace-isearch)
-(el-get-bundle wgrep)
+;; --- Directory tree explore
+(el-get-bundle popwin)
+(el-get-bundle direx)
 
 ;; --- Helm
 (el-get-bundle helm)
 (el-get-bundle helm-ag)
 (el-get-bundle helm-descbinds)
-(el-get-bundle helm-gtags)
 (el-get-bundle helm-migemo)
 (el-get-bundle helm-swoop)
 
-;; ;; --- Auto complete
-;; (el-get-bundle auto-complete)
-;; (el-get-bundle auto-complete-yasnippet)
-;; (el-get-bundle auto-complete-auctex)
-;; (el-get-bundle auto-complete-clang)
-;; (el-get-bundle ac-helm)
-
+(el-get-bundle ace-jump-mode)
+(el-get-bundle ace-isearch)
+(el-get-bundle wgrep)
 
 ;; --- Programing language mode
 (el-get-bundle yaml-mode)
@@ -72,6 +63,10 @@
 ;; -- Yasnippets
 (el-get-bundle yasnippet)
 
+;; -- TAG jump by using gtags
+(el-get-bundle ggtags)
+(el-get-bundle helm-gtags)
+
 ;; --- Company mode
 (el-get-bundle company)
 (el-get-bundle company-c-headers)
@@ -89,7 +84,10 @@
 (el-get-bundle jedi)
 (el-get-bundle syohex/emacs-company-jedi
   :depends (company jedi))
+(el-get-bundle tkf/emacs-jedi-direx
+  :depends (jedi direx))
 
-;; ;; --- Projectile
-;; (el-get-bundle projectile)
+;; --- Uncrustify
+(el-get-bundle glima/Emacs-uncrustify
+  :name uncrustify)
 

@@ -7,6 +7,10 @@
 ;; Start Emacs server
 (server-start)
 
+;; exec-path
+(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/usr/texbin")
+
 ;; Emacs directory (defalut is "~/.emacs.d")
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
@@ -23,16 +27,13 @@
       (add-to-list 'load-path dir)
       (normal-top-level-add-subdirs-to-load-path))))
 
-;; exec-path
-(add-to-list 'exec-path "/usr/local/bin")
-(add-to-list 'exec-path "/usr/texbin")
-
 ;;;=============================================================================
 ;;; el-get -- install and manage elisp code for Emacs
 ;;;   <https://github.com/dimitri/el-get>
 ;;;=============================================================================
 
-(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
+;; (add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
+(add-to-list 'load-path (expand-file-name "el-get" el-get-dir))
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
