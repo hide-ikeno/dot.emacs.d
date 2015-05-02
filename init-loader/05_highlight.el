@@ -15,9 +15,12 @@
 (global-hl-line-mode t)
 
 ;;; 対応する括弧の強調 -- paren.el
-(show-paren-mode t)
-(setq show-paren-style 'mixed)
-(setq show-paren-style 'expression)
+(use-package paren
+  :config
+  (show-paren-mode t)
+  (setq show-paren-style 'mixed)
+  (setq show-paren-style 'expression)
+  )
 ;; ;; マッチした場合の色
 ;; (set-face-background 'show-paren-match-face "dodger blue")
 ;; (set-face-foreground 'show-paren-match-face "white")
@@ -59,6 +62,7 @@
 ;;;=============================================================================
 (el-get-bundle rainbow-delimiters)
 (use-package rainbow-delimiters
+  :functions rainbow-delimiters-mode
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
   )
@@ -69,6 +73,7 @@
 ;;;=============================================================================
 (el-get-bundle volatile-highlights)
 (use-package volatile-highlights
+  :functions volatile-highlights-mode
   :config
   (volatile-highlights-mode t)
   )

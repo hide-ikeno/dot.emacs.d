@@ -40,6 +40,7 @@
 ;;;=============================================================================
 (el-get-bundle anzu)
 (use-package anzu
+  :functions global-anzu-mode
   :config
   (global-anzu-mode t)
   )

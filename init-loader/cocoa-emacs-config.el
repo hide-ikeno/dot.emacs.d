@@ -19,8 +19,9 @@
 (set-fontset-font nil 'unicode
                   (font-spec :family "Ricty"))
 
-(modify-all-frames-parameters (list (cons 'alpha  '(95 80 50 30))))
+(modify-all-frames-parameters (list (cons 'alpha  '(90 80 50 30))))
 
 ;; avoid hiding with M-h
 (setq mac-pass-command-to-system nil)
-
+(setq mac-pass-control-to-system nil)
+(setq mac-pass-option-to-system nil)
