@@ -4,12 +4,13 @@
 ;;; Description: Setup migemo
 ;;;
 
-(el-get-bundle migemo)
-;; NOTE: download
-;; https://github.com/Hideyuki-SHIRAI/migemo-for-ruby1.9/blob/master/migemo.el.in
-;; as migemo.el and put into the directory in the load-path.
+;;;=============================================================================
+;;; migemo -- Japanese incremental search through dynamic pattern expansion
+;;;=============================================================================
 
+(el-get-bundle migemo)
 (use-package migemo
+  :functions migemo-init
   :init
   (setq migemo-command "cmigemo")
   (setq migemo-options '("-q" "--emacs"))
@@ -27,4 +28,3 @@
   (load-library "migemo")
   (migemo-init)
   )
-

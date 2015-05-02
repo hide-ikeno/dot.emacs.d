@@ -8,8 +8,11 @@
 ;; Basic setup
 ;;==============================================================================
 
-;;; Highlight region
-(setq transient-mark-mode t)
+;;; visible bell
+(setq visible-bell t)
+
+;;; yes-or-no -> y-or-n
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;;; 選択範囲の文字を置き換え
 (delete-selection-mode t)
@@ -17,19 +20,8 @@
 ;;; 行頭で "C-k" すると，改行文字も kill する
 (setq kill-whole-line 'always)
 
-;;; visible bell
-(setq visible-bell t)
-
-;;; yes-or-no -> y-or-n
-(fset 'yes-or-no-p 'y-or-n-p)
-
 ;;; Tab width
 (setq-default tab-width 4)
-
-;;; Use C-h v or `Help->Commands, Variables, Keys->Describe Variable...'
-;;; to find out what these variables mean.
-(setq find-file-compare-truenames t
-      minibuffer-max-depth nil)
 
 ;;; テキストを折り返す
 (setq truncate-lines t)
@@ -56,36 +48,6 @@
 ;;; 行頭の空白を段落の区切りとして認識させる
 (setq paragraph-start '"^\\([ 　・○<\t\n\f]\\|(?[0-9a-zA-Z]+)\\)")
 
-;;==============================================================================
-;; Customize some default keybinds
-;;==============================================================================
+;;; 履歴数を大きくする
+(setq history-length 10000)
 
-;; C-h: BackSpace (<= help-for-help)
-(keyboard-translate ?\C-h ?\C-?)
-
-;; C-m newline-and-indent (<= newline)
-(global-set-key (kbd "C-m") 'newline-and-indent)
-
-;; C-l recenter-top-bottom
-(global-set-key (kbd "C-l") 'recenter-top-bottom)
-
-;; C-t other-window (<= transpose-chars)
-;; (global-set-key (kbd "C-t") 'other-window)
-
-;; M-?, [f1]: help-for-help
-(global-set-key (kbd "M-?") 'help-for-help)
-(global-set-key [f1] 'help-for-help)
-
-;; M-h backward-kill-word (<= mark-paragraph)
-(global-set-key (kbd "M-h") 'backward-kill-word)
-;; M-H mark-paragraph
-(global-set-key (kbd "M-H") 'mark-paragraph)
-;; M-g goto-line
-(global-set-key (kbd "M-g") 'goto-line)
-
-;;; 日本語でインクリメンタルサーチ
-(define-key isearch-mode-map (kbd "C-k") 'isearch-edit-string)
-
-;;; CUA mode -- 矩形選択用
-(cua-mode t)
-(setq cua-enable-cua-keys nil)

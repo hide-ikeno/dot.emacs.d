@@ -50,10 +50,9 @@
   (dired-map-over-marks-check
    (function dired-convert-coding-system) arg 'convert-coding-system t))
 
-
-;;;-----------------------------------------------------------------------------
+;;;=============================================================================
 ;;; dired-hacks -- Collection of useful dired additions
-;;;-----------------------------------------------------------------------------
+;;;=============================================================================
 (el-get-bundle dired-hacks)
 
 (use-package dired-filter)

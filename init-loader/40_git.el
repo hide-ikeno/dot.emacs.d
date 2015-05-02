@@ -6,22 +6,32 @@
 ;;; Code:
 ;;;
 
-;; install external packages
-(el-get 'sync '(gist git-gutter-fringe+ magit))
-
 ;;;=============================================================================
-;;; Git customization
+;;; Magit -- control Git from Emacs
 ;;;=============================================================================
 (el-get-bundle magit)
 (use-package magit
-  :init
+  :config
   (setq magit-last-seen-setup-instructions "1.4.0")
   )
 
-(el-get-bundle git-gutter-fringe+)
-(use-package git-gutter-fringe+
+;;;=============================================================================
+;;; git-gutter, git-gutter-fringe --  Port of Sublime Text plugin GitGutter
+;;;=============================================================================
+(el-get-bundle git-gutter-fringe)
+(use-package git-gutter-fringe
   :config
-  (global-git-gutter+-mode))
+  ;; Please adjust fringe width if your own sign is too big.
+  (setq-default left-fringe-width  20)
+  (setq-default right-fringe-width 20)
+  ;; ;; Face
+  ;; (set-face-foreground 'git-gutter-fr:modified "yellow")
+  ;; (set-face-foreground 'git-gutter-fr:added    "blue")
+  ;; (set-face-foreground 'git-gutter-fr:deleted  "white")
+  (global-git-gutter-mode))
 
+;;;=============================================================================
+;;; gist -- Emacs integration for gist.github.com
+;;;=============================================================================
 (el-get-bundle gist)
 (use-package gist)
