@@ -65,7 +65,6 @@
 (require 'diminish)
 
 
-
 ;;;=============================================================================
 ;;; Themes
 ;;;=============================================================================
@@ -89,3 +88,27 @@
 (load (locate-user-emacs-file "conf/init-ruby-mode"))
 
 (load (locate-user-emacs-file "conf/external-packages"))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
+ '(safe-local-variable-values
+   (quote
+	((flyckeck-clang-include-path "/Users/ikeno/programs/eripsi/src/" "/Users/ikeno/programs/eripsi/" "/usr/local/include")
+	 (flyckeck-clang-definitions "DEBUG")
+	 (flyckeck-clang-warnings "all" "extra")
+	 (company-clang-arguments "-std=c++11" "-stdlib=libc++" "-DDEBUG" "-I/usr/local/include" "-I/Users/ikeno/programs/eripsi/src/" "-I/Users/ikeno/programs/eripsi/")
+	 (flyckeck-clang-include-path list "/Users/ikeno/programs/eripsi/src/" "/Users/ikeno/programs/eripsi/")
+	 (flyckeck-clang-include-path list "-I/Users/ikeno/programs/eripsi/src/" "-I/Users/ikeno/programs/eripsi/")
+	 (flyckeck-clang-standard-library . "libc++")
+	 (flyckeck-clang-language-standard . "c++11")
+	 (company-clang-arguments "-std=c++11" "-stdlib=libc++" "-DDEBUG" "-I." "-I/usr/local/include" "-I/Users/ikeno/programs/eripsi/src/" "-I/Users/ikeno/programs/eripsi/")
+	 (company-clang-arguments "-std=c++11" "-stdlib=libc++" "-DDEBUG" "-I/usr/local/include" "-I/Users/ikeno/programs/eripsi/src" "-I/Users/ikeno/programs/eripsi/ext")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

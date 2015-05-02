@@ -19,9 +19,11 @@
 (el-get-bundle viewer)
 (el-get-bundle visual-regexp)
 
+(el-get-bundle wrap-region)
+
 ;; --- Directory tree explore
-(el-get-bundle popwin)
-(el-get-bundle direx)
+;; (el-get-bundle popwin)
+(el-get-bundle direx :depends popwin)
 
 ;; --- Helm
 (el-get-bundle helm)
@@ -30,9 +32,24 @@
 (el-get-bundle helm-migemo)
 (el-get-bundle helm-swoop)
 
+;; ace-jump-mode
 (el-get-bundle ace-jump-mode)
 (el-get-bundle ace-isearch)
+
+;; wgrep and wgrep-helm
 (el-get-bundle wgrep)
+
+;; Multiple cursors
+(el-get-bundle multiple-cursors)
+(el-get-bundle expand-region)
+(el-get-bundle region-bindings-mode
+  :depends (multiple-cursors expand-region))
+
+;; Incremental search compatible with multiple-cursors
+;; (el-get-bundle phi-search)
+;; (el-get-bundle phi-search-dired)
+;; (el-get-bundle zk-phi/phi-search-migemo
+;;   :depends (phi-search migemo))
 
 ;; --- Programing language mode
 (el-get-bundle yaml-mode)
@@ -44,21 +61,15 @@
 (el-get-bundle rst-mode)
 (el-get-bundle pandoc-mode)
 
-(el-get-bundle rust-mode)
-
 ;; --- flycheck
 (el-get-bundle flycheck)
+(el-get-bundle flycheck-pos-tip)
 (el-get-bundle yasuyk/helm-flycheck)
 
 ;; --- Git
 (el-get-bundle magit)
 (el-get-bundle gist)
 (el-get-bundle git-gutter-fringe+)
-
-;; -- Doxymacs
-;; Compile error
-;; (el-get-bundle doxymacs)
-;; (el-get-bundle doxy-preview)
 
 ;; -- Yasnippets
 (el-get-bundle yasnippet)
@@ -71,23 +82,30 @@
 (el-get-bundle company)
 (el-get-bundle company-c-headers)
 
-;; --- Irony-mode
-(el-get-bundle irony-mode)
-(el-get-bundle company-irony)
-(el-get-bundle flycheck-irony)
-
-;; -- AucTeX
+;; AucTeX
 (el-get-bundle auctex)
 (el-get-bundle company-auctex)
 
-;; --- Jedi
+;; C++ development environment
+
+;; (el-get-bundle irony-mode)
+;; (el-get-bundle company-irony)
+;; (el-get-bundle flycheck-irony)
+
+;; Python development environment
 (el-get-bundle jedi)
 (el-get-bundle syohex/emacs-company-jedi
   :depends (company jedi))
 (el-get-bundle tkf/emacs-jedi-direx
   :depends (jedi direx))
+(el-get-bundle helm-pydoc)
 
-;; --- Uncrustify
+;; Rust
+(el-get-bundle rust-mode)
+
+;; Uncrustify -- emacs front end of uncrustify code formatter
 (el-get-bundle glima/Emacs-uncrustify
   :name uncrustify)
 
+;; Guide-key
+(el-get-bundle guide-key)

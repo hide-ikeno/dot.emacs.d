@@ -9,9 +9,13 @@
 ;;; cc-mode
 ;;;=============================================================================
 
+(eval-when-compile
+  (require 'cc-mode)
+  )
 ;; C/C++ 用のカスタマイズ
-(use-package cc
-  :config
+(use-package cc-mode
+  :defines (c-toggle-auto-state c-toggle-hungry-state)
+  :init
   (defconst my-c-style
     '(
       (c-basic-offset             . 4)        ; 基本オフセット量の設定
@@ -138,12 +142,6 @@
     ;; C-h        空白の一括削除
     ;; (define-key c-mode-base-map "\C-m" 'newline-and-indent)
     (define-key c-mode-base-map "\C-h" 'c-electric-backspace)
-
-    ;;
-    ;; ClangFormat for formatting source files
-    ;;
-    (when (load "clang-format" nil t)
-      (define-key c-mode-base-map [C-M-tab] 'clang-format-region))
     )
 
   ;; hook の設定

@@ -1,5 +1,6 @@
-(use-package helm-config
+(use-package helm
   :config
+  (use-package helm-config)
   (setq helm-idle-delay 0.1)
   (setq helm-input-idle-delay 0)
   (setq helm-candidate-number-limit 300)
@@ -27,6 +28,8 @@
          ("C-M-z"   . helm-resume)
          ("C-x C-f" . helm-find-files)
          ("C-x C-b" . helm-buffers-list)
-         ("C-c i"   . helm-imenu))
+         ;; ("C-c i"   . helm-imenu)
+         ("M-/"     . helm-dabbrev)
+         )
   )
 

@@ -1,3 +1,4 @@
 (use-package company-auctex
-  :init
+  :commands (company-auctex-init)
+  :config
   (company-auctex-init))
