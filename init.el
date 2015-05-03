@@ -79,11 +79,13 @@
   (init-loader-load init-loader-directory)
   )
 
-;; (load (locate-user-emacs-file "conf/init-basics"))
-;; (load (locate-user-emacs-file "conf/cocoa-emacs-config"))
-;; (load (locate-user-emacs-file "conf/init-cc-mode"))
-;; (load (locate-user-emacs-file "conf/init-fortran-mode"))
-;; (load (locate-user-emacs-file "conf/init-ruby-mode"))
+;;;=============================================================================
+;;; Load customize file
+;;;=============================================================================
+;;; Split custom-file
+(setq custom-file (locate-user-emacs-file ".emacs-custom.el"))
 
-;; (load (locate-user-emacs-file "conf/external-packages"))
+(load-file custom-file)
 
+;; (el-get-bundle! noflet)
+;; (el-get-bundle! esup)

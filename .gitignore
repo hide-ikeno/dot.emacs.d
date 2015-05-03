@@ -1,10 +1,14 @@
 *.swp
 *~
 *.elc
+.git
 el-get
+*/el-get
 elpa
+*/elpa
 auto-save-list
 ac-comphist.dat
+helm-adaptive-history
 bookmarks
 irony
 tramp
@@ -12,3 +16,4 @@ tramp
 .recentf
 .python-environments
 local/clang/stdafx.pch
+.DS_Store
