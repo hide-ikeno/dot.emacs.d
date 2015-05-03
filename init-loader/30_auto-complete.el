@@ -10,14 +10,14 @@
 (el-get-bundle auto-complete)
 
 (use-package auto-complete-config
-  :defines ac-sources ac-delay ac-use-fuzzy ac-use-menu-map
+  :defines
+  ac-sources ac-delay ac-use-fuzzy ac-use-menu-map
   ac-dictionary-directories ac-completing-map
+  :commands ac-config-default ac-set-trigger-key
   :config
   ;; (add-to-list 'ac-modes 'text-mode)
   ;; (add-to-list 'ac-modes 'fundamental-mode)
-
   ;; (setq ac-auto-start nil)  ;; 補完を自動的に開始しない
-  ;; (ac-set-trigger-key "TAB") ;; コンテキストに応じてTABで補完
   (setq ac-delay 0.3)
   (setq ac-use-menu-map t)       ;; 補完メニュー表示時にC-n/C-pで補完候補選択
   (setq ac-use-fuzzy t)          ;; 曖昧マッチ
@@ -28,6 +28,8 @@
              ("C-n" . ac-next)          ; 次候補の選択
              ("C-p" . ac-previous)      ; 前候補の選択
              ("TAB" . ac-complete))     ; TAB で補完完了
+
+  (ac-set-trigger-key "TAB") ;; コンテキストに応じてTABで補完
   (ac-config-default)
   )
 

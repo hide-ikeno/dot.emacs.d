@@ -206,7 +206,4 @@
 
   )
 
-;; ;; flycheck-tip
-;; (use-package flycheck-tip
-;;   :config
-;;   (bind-key "C-c C-n" 'flycheck-tip-cycle c-mode-base-map))
+

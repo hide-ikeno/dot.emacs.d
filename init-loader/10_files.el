@@ -17,8 +17,15 @@
 ;;;=============================================================================
 (el-get-bundle recentf-ext)
 
-(use-package recentf-ext
+(use-package recentf
+  :defines
+  recentf-save-file
+  recentf-max-saved-items
+  recentf-auto-cleanup
+  recentf-auto-save-timer
+  :commands recentf-mode
   :config
+  (use-package recentf-ext)
   (setq recentf-save-file (expand-file-name (locate-user-emacs-file ".recentf")))
   (setq recentf-max-saved-items 2000)
   (setq recentf-auto-cleanup 10)

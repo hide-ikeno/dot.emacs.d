@@ -11,6 +11,7 @@
 ;;;=============================================================================
 (el-get-bundle magit)
 (use-package magit
+  :defines magit-last-seen-setup-instructions
   :config
   (setq magit-last-seen-setup-instructions "1.4.0")
   )
@@ -35,11 +36,3 @@
 ;;;=============================================================================
 (el-get-bundle gist)
 (use-package gist)
-
-;;;=============================================================================
-;;; helm-ls-git --- list git files using helm interactive
-;;;=============================================================================
-(el-get-bundle helm-ls-git)
-(use-package helm-ls-git
-  :bind (("C-x C-g" . helm-ls-git-ls)))
-

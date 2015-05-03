@@ -8,12 +8,15 @@
 ;;;=============================================================================
 ;;; Emacs frontend of the Uncrustify code beautifier
 ;;;=============================================================================
-(el-get-bundle glima/Emacs-uncrustify :name uncrustify)
-(use-package uncrustify
+(el-get-bundle koko1000ban/emacs-uncrustify-mode :name uncrustify-mode)
+(use-package uncrustify-mode
+  :commands uncrustify-mode
+  :defines uncrustify-config-path
   :config
   ;; Location of the uncrustify configuration file
-  (setq uncrustify-uncrustify-cfg-file "~/.uncrustify/uncrustify.cfg")
+  (setq-default uncrustify-config-path "~/.uncrustify/uncrustify.cfg")
   ;; Run uncrustify when buffer is saved
-  (setq uncrustify-uncrustify-on-save t)
+  (add-hook 'c-mode-common-hook
+            '(lambda () (uncrustify-mode 1)))
   )
 
