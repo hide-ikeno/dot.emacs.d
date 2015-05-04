@@ -87,6 +87,7 @@
     helm-swoop-speed-or-color
     helm-swoop-move-to-line-cycle
     helm-swoop-use-line-number-face
+    helm-swoop-map
     :config
     ;; Save buffer when helm-multi-swoop-edit complete
     (setq helm-multi-swoop-edit-save t)
