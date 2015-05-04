@@ -22,6 +22,7 @@
   helm-samewindow
   helm-quick-update
   helm-map
+  :init (helm-mode 1)
   :commands
   helm-other-buffer
   helm-mode
@@ -29,8 +30,6 @@
   helm-candidates-in-buffer
   helm-get-current-source
   helm-aif
-  :init
-  (helm-mode 1)
   :config
   (use-package helm-files)
   (setq helm-idle-delay 0.1)
@@ -40,7 +39,6 @@
   (setq helm-quick-update t)
   ;; Change face for dark color theme
   ;; (set-face-background 'helm-selection "blue")
-
   ;;
   ;; helm-descbinds.el --- Yet Another `describe-bindings' with `helm'.
   ;;
@@ -142,7 +140,7 @@
          ("M-x"     . helm-M-x)
          ("M-y"     . helm-show-kill-ring)
          ("C-M-z"   . helm-resume)
-         ("C-x C-f" . helm-find-files)
+         ;; ("C-x C-f" . helm-find-files)
          ("C-x b"   . my-helm-switch-to-buffer)
          ("C-x C-b" . helm-buffers-list)
          ("C-c i"   . helm-imenu))

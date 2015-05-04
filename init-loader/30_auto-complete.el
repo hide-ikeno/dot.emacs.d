@@ -18,7 +18,7 @@
   ;; (add-to-list 'ac-modes 'text-mode)
   ;; (add-to-list 'ac-modes 'fundamental-mode)
   ;; (setq ac-auto-start nil)  ;; 補完を自動的に開始しない
-  (setq ac-delay 0.3)
+  (setq ac-delay 0.1)
   (setq ac-use-menu-map t)       ;; 補完メニュー表示時にC-n/C-pで補完候補選択
   (setq ac-use-fuzzy t)          ;; 曖昧マッチ
   ;; ユーザー定義辞書を置くディレクトリ
@@ -47,3 +47,15 @@
 ;;;=============================================================================
 (el-get-bundle ac-math)
 (use-package ac-math)
+
+;; ;;;=============================================================================
+;; ;;; auto-complete-clang-async
+;; ;;;=============================================================================
+;; (el-get-bundle auto-complete-clang-async)
+;; (use-package auto-complete-clang-async
+;;   :config
+;;   (add-hook 'c-mode-common-hook
+;;             (lambda()
+;;               (add-to-list 'ac-sources 'ac-source-clang-async))
+;;             )
+;;   )
