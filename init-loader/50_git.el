@@ -42,4 +42,7 @@
 ;;;=============================================================================
 (el-get-bundle helm-ls-git)
 (use-package helm-ls-git
-  :bind (("C-x C-g" . helm-ls-git-ls)))
+  :defines helm-ls-git-fuzzy-match
+  :bind ("C-x C-g" . helm-ls-git-ls)
+  :config (setq helm-ls-git-fuzzy-match t)
+  )
