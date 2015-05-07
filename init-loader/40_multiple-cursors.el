@@ -33,7 +33,7 @@
 (el-get-bundle expand-region)
 (use-package expand-region
   :bind ("C-=" . er/expand-region)
-  :config
+  :init
   (bind-keys :map region-bindings-mode-map
              ("C-=" . er/expand-region))
   )
