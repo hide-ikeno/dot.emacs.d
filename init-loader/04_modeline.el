@@ -51,4 +51,8 @@
 (use-package linum
   :config
   (global-linum-mode t)
+  (setq linum-format "%4d") ; 5 桁分の領域を確保して行番号のあとにスペースを入れる
+  (setq linum-delay t)
+  (defadvice linum-schedule (around my-linum-schedule () activate)
+    (run-with-idle-timer 0.2 nil #'linum-update-current))
   )
