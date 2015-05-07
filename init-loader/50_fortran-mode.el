@@ -12,7 +12,7 @@
 ;; fortran-mode
 
 (use-package fortran
-  :functions (fortran-auto-fill-mode)
+  :commands fortran-auto-fill-mode
   :config
   (add-hook 'fortran-mode-hook
             (lambda ()
