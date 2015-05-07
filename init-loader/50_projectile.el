@@ -12,8 +12,12 @@
 (el-get-bundle projectile)
 
 (use-package projectile
-  :commands projectile-global-mode helm-projectile-on
-  :defines  projectile-indexing-method projectile-enable-caching
+  :commands
+  projectile-global-mode
+  helm-projectile-on
+  :defines
+  projectile-indexing-method
+  projectile-enable-caching
   :init
   (projectile-global-mode)
   :config

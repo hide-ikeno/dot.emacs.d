@@ -88,7 +88,6 @@
   :init (bind-key "TAB" 'isearch-dabbrev-expand isearch-mode-map)
   )
 
-
 ;;;=============================================================================
 ;;; imenus.el --- Imenu for multiple buffers
 ;;;=============================================================================
@@ -149,6 +148,7 @@
   ;; C-M-k -> backward-kill-sexp (remap)
   :bind (("C-M-g" . helm-ag)
          ("C-M-k" . backward-kill-sexp))
+  :defines helm-ag-insert-at-point
   :config
   ;; 現在のシンボルをデフォルトのクエリにする
   (setq helm-ag-insert-at-point 'symbol)
@@ -156,11 +156,13 @@
      ".emacs.d以下を検索"
      (interactive)
      (helm-ag "~/.emacs.d/"))
-  (require 'projectile nil t)
-  (defun helm-projectile-ag ()
-     "Projectileと連携"
-     (interactive)
-     (helm-ag (projectile-project-root)))
+  (use-package projectile
+    :functions projectile-project-root
+    :config
+    (defun helm-projectile-ag ()
+      "Projectileと連携"
+      (interactive)
+      (helm-ag (projectile-project-root))))
   )
 
 ;;;=============================================================================
@@ -178,6 +180,7 @@
 ;; C-c C-k : Discard all changes and exit.
 ;; C-x C-q : Exit wgrep mode.
 (use-package wgrep-helm
+  :defines wgrep-enable-key wgrep-auto-save-buffer wgrep-change-readonly-file
   :config
   ;; r で wgrepモードにする (default "C-c C-p")
   (setf wgrep-enable-key "r")
@@ -186,4 +189,3 @@
   ;; read-only bufferにも変更を適用する
   (setq wgrep-change-readonly-file t)
   )
-
