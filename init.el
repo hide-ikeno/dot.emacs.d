@@ -85,7 +85,7 @@
 ;;; Split custom-file
 (setq custom-file (locate-user-emacs-file ".emacs-custom.el"))
 
-(load-file custom-file)
+;;(load-file custom-file)
 
 ;; (el-get-bundle! noflet)
 ;; (el-get-bundle! esup)

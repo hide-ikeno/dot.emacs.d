@@ -10,9 +10,13 @@
 (el-get-bundle japanese-holidays)
 
 (use-package japanese-holidays
-  :defines japanese-holidays japanese-holiday-weekend japanese-holiday-weekend-marker
+  :defines
+  japanese-holidays
+  japanese-holiday-weekend
+  japanese-holiday-weekend-marker
+  calendar-holidays
+  mark-holidays-in-calendar
   :config
-  (require 'calendar)
   (setq calendar-holidays ;; 他の国の祝日も表示させたい場合は適当に調整
         (append japanese-holidays holiday-local-holidays holiday-other-holidays))
   ;; 祝日をカレンダーに表示

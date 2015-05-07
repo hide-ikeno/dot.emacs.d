@@ -10,8 +10,13 @@
 
 (el-get-bundle migemo)
 (use-package migemo
+  :defines
+  migemo-command migemo-options migemo-dictionary
+  migemo-user-dictionary migemo-regex-dictionary
+  migemo-coding-system migemo-use-pattern-alist
+  migemo-use-frequent-pattern-alist migemo-pattern-alist-length
   :functions migemo-init
-  :init
+  :config
   (setq migemo-command "cmigemo")
   (setq migemo-options '("-q" "--emacs"))
   ;; migemo-dict のパスを指定
@@ -23,7 +28,7 @@
   (setq migemo-use-pattern-alist t)
   (setq migemo-use-frequent-pattern-alist t)
   (setq migemo-pattern-alist-length 1024)
-  :config
+  :init
   ;; 起動時に初期化も行う
   (load-library "migemo")
   (migemo-init)

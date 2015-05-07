@@ -27,7 +27,7 @@
         failure)
     (condition-case err
         (with-temp-buffer
-          (insert-file file)
+          (insert-file-contents file)
           (write-region (point-min) (point-max) file))
       (error (setq failure err)))
     (if (not failure)

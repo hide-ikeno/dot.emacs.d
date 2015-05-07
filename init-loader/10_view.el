@@ -43,6 +43,8 @@
 ;; Viewer
 (el-get-bundle viewer)
 (use-package viewer
+  :defines viewer-modeline-color-view viewer-modeline-color-unwritable
+  :functions viewer-stay-in-setup  viewer-change-modeline-color-setup
   :config
   ;; 書き込み不能なファイルでは view-mode から抜けない
   (viewer-stay-in-setup)
