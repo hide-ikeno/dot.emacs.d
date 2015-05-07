@@ -11,7 +11,7 @@
   :config
   (setq yas-snippet-dirs
         (list (concat user-emacs-directory "local/yasnippet/snippets")
-              (concat el-get-dir "yasnippet/snippets")))
+              (concat el-get-dir "/yasnippet/snippets")))
   ;; (custom-set-variables '(yas-trigger-key "TAB"))
   (yas-global-mode 1)
   )
