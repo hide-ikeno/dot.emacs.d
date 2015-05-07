@@ -94,7 +94,6 @@
          ("M-y"     . helm-show-kill-ring)
          ("C-M-z"   . helm-resume)
          ("C-x C-f" . helm-find-files)
-         ("C-x b"   . helm-switch-to-buffer)
          ("C-x C-b" . helm-buffers-list)
          ("M-/"     . helm-dabbrev)
          ("C-c i"   . helm-imenu))
