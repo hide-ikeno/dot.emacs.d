@@ -64,17 +64,6 @@
 (use-package ace-jump-mode)
 
 ;;;=============================================================================
-;;; ace-window
-;;;=============================================================================
-(el-get-bundle ace-window)
-(use-package ace-window
-  ;; :defines aw-keys
-  :bind ("C-x o" . ace-window)
-  ;; :config
-  ;; (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  )
-
-;;;=============================================================================
 ;;; ace-isearch -- A seamless bridge between isearch and ace-jump-mode
 ;;;=============================================================================
 (el-get-bundle ace-isearch)
@@ -89,4 +78,12 @@
   (setq ace-isearch-input-idle-delay 0.5)
   ;; helm-swoop は自動的に起動しない
   (setq ace-isearch-use-function-from-isearch nil)
+  )
+
+;;;=============================================================================
+;;; isearch-dabbrev -- Use dabbrev-expand within isearch
+;;;=============================================================================
+(el-get-bundle isearch-dabbrev)
+(use-package isearch-dabbrev
+  :init (bind-key "TAB" 'isearch-dabbrev-expand isearch-mode-map)
   )
