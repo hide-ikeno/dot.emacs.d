@@ -14,6 +14,9 @@
   ac-sources ac-delay ac-use-fuzzy ac-use-menu-map
   ac-dictionary-directories ac-completing-map
   :commands ac-config-default ac-set-trigger-key
+  :init
+  (ac-set-trigger-key "TAB") ;; コンテキストに応じてTABで補完
+  (ac-config-default)
   :config
   ;; (add-to-list 'ac-modes 'text-mode)
   ;; (add-to-list 'ac-modes 'fundamental-mode)
@@ -28,9 +31,6 @@
              ("C-n" . ac-next)          ; 次候補の選択
              ("C-p" . ac-previous)      ; 前候補の選択
              ("TAB" . ac-complete))     ; TAB で補完完了
-
-  (ac-set-trigger-key "TAB") ;; コンテキストに応じてTABで補完
-  (ac-config-default)
   )
 
 ;;;=============================================================================
