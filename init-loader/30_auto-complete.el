@@ -11,7 +11,8 @@
 
 (use-package auto-complete-config
   :defines
-  ac-sources ac-delay ac-use-fuzzy ac-use-menu-map
+  ac-sources  ac-use-fuzzy ac-use-menu-map
+  ac-delay ac-quick-help-delay ac-auto-show-menu
   ac-dictionary-directories ac-completing-map
   :commands ac-config-default ac-set-trigger-key
   :init
@@ -22,15 +23,17 @@
   ;; (add-to-list 'ac-modes 'fundamental-mode)
   ;; (setq ac-auto-start nil)  ;; 補完を自動的に開始しない
   (setq ac-delay 0.1)
+  (setq ac-auto-show-menu 0.1)
+  (setq ac-quick-help-delay 0.5)
   (setq ac-use-menu-map t)       ;; 補完メニュー表示時にC-n/C-pで補完候補選択
   (setq ac-use-fuzzy t)          ;; 曖昧マッチ
   ;; ユーザー定義辞書を置くディレクトリ
   (add-to-list 'ac-dictionary-directories (locate-user-emacs-file "ac-dict"))
   ;; キーバインド
-  (bind-keys :map ac-completing-map
-             ("C-n" . ac-next)          ; 次候補の選択
-             ("C-p" . ac-previous)      ; 前候補の選択
-             ("TAB" . ac-complete))     ; TAB で補完完了
+  ;; (bind-keys :map ac-completing-map
+  ;;            ("C-n" . ac-next)          ; 次候補の選択
+  ;;            ("C-p" . ac-previous)      ; 前候補の選択
+  ;;            ("TAB" . ac-complete))     ; TAB で補完完了
   )
 
 ;;;=============================================================================
