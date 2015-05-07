@@ -59,3 +59,16 @@
 ;;               (add-to-list 'ac-sources 'ac-source-clang-async))
 ;;             )
 ;;   )
+
+;;;=============================================================================
+;;; auto-complete-c-headers
+;;;=============================================================================
+(el-get-bundle auto-complete-c-headers)
+(use-package auto-complete-c-headers
+  :config
+  (defun my:ac-c-headers-init ()
+    (add-to-list 'ac-sources 'ac-source-c-headers))
+  (add-hook 'c++-mode-hook 'my:ac-c-headers-init)
+  (add-hook 'c-mode-hook 'my:ac-c-headers-init)
+  )
+
