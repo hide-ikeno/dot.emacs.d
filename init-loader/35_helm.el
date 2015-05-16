@@ -77,7 +77,7 @@
   ;; ac-helm --- helm source for auto-complete
   ;;
   (use-package ac-helm
-    :bind ("C-:" . ac-complete-with-helm)
+    :bind ("M-/" . ac-complete-with-helm)
     :config
     (bind-key "C-;" 'ac-complete-with-helm ac-complete-mode-map)
     )
@@ -93,9 +93,9 @@
          ("M-x"     . helm-M-x)
          ("M-y"     . helm-show-kill-ring)
          ("C-M-z"   . helm-resume)
+         ("M-/"     . helm-dabbrev)
          ("C-x C-f" . helm-find-files)
          ("C-x C-b" . helm-buffers-list)
-         ("M-/"     . helm-dabbrev)
          ("C-c i"   . helm-imenu))
   )
 
