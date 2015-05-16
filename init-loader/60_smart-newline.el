@@ -6,6 +6,7 @@
 
 (el-get-bundle smart-newline)
 (use-package smart-newline
+  :commands smart-newline-mode
   :init
   (add-hook 'ruby-mode-hook ;; or any major-mode-hooks
             (lambda ()
