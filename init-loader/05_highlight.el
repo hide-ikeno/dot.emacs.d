@@ -10,6 +10,7 @@
 
 ;;; Highlight region
 (setq transient-mark-mode t)
+;; (set-face-background 'region "Blue")
 
 ;; 現在行をハイライト
 (global-hl-line-mode t)
@@ -21,6 +22,7 @@
   (setq show-paren-style 'mixed)
   (setq show-paren-style 'expression)
   )
+
 ;; ;; マッチした場合の色
 ;; (set-face-background 'show-paren-match-face "dodger blue")
 ;; (set-face-foreground 'show-paren-match-face "white")

@@ -12,6 +12,12 @@
 (el-get-bundle helm-migemo)
 (el-get-bundle ac-helm)
 
+
+(use-package tramp
+  :config
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+  )
 (use-package helm-config
   :defines
   helm-idle-delay

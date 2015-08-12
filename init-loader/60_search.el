@@ -66,6 +66,8 @@
 ;;;=============================================================================
 ;;; ace-isearch -- A seamless bridge between isearch and ace-jump-mode
 ;;;=============================================================================
+(el-get-bundle avy)
+(use-package avy)
 (el-get-bundle ace-isearch)
 (use-package ace-isearch
   :defines ace-isearch-input-idle-delay ace-isearch-use-function-from-isearch
@@ -75,7 +77,7 @@
   ;; isearch-mode から M-o で helm-swoop を起動
   (bind-key "M-o" 'helm-multi-swoop-all-from-isearch isearch-mode-map)
   :config
-  (setq ace-isearch-input-idle-delay 0.5)
+  (setq ace-isearch-input-idle-delay 1.0)
   ;; helm-swoop は自動的に起動しない
   (setq ace-isearch-use-function-from-isearch nil)
   )
