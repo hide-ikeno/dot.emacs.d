@@ -9,7 +9,6 @@
 ;;;=============================================================================
 (el-get-bundle helm)
 (el-get-bundle helm-descbinds)
-(el-get-bundle helm-migemo)
 (el-get-bundle ac-helm)
 
 
@@ -34,6 +33,7 @@
   helm-candidates-in-buffer
   helm-get-current-source
   helm-aif
+  helm-migemo-mode
   :config
   (use-package helm-files)
   (setq helm-idle-delay 0.1)
@@ -55,30 +55,7 @@
   ;;
   ;; helm-migemo
   ;;
-
-  ;; (use-package helm-migemo
-  ;;   :defines
-  ;;   helm-migemize-command-idle-delay
-  ;;   helm-for-files
-  ;;   :commands
-  ;;   helm-migemize-command
-  ;;   :init
-  ;;   (helm-migemize-command helm-for-files)
-  ;;   :config
-  ;;   (defun helm-compile-source--candidates-in-buffer (source)
-  ;;     (helm-aif (assoc 'candidates-in-buffer source)
-  ;;         (append source
-  ;;                 `((candidates
-  ;;                    . ,(or (cdr it)
-  ;;                           (lambda ()
-  ;;                             ;; Do not use `source' because other plugins
-  ;;                             ;; (such as helm-migemo) may change it
-  ;;                             (helm-candidates-in-buffer (helm-get-current-source)))))
-  ;;                   (volatile) (match identity)))
-  ;;       source))
-  ;;   ;; helmコマンドで migemo を有効にする
-  ;;   (setq helm-migemize-command-idle-delay helm-idle-delay)
-  ;;   )
+  (helm-migemo-mode 1)
   ;;
   ;; ac-helm --- helm source for auto-complete
   ;;

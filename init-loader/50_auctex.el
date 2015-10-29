@@ -30,8 +30,8 @@
   :config
   (setq TeX-engine-alist
         '((pdfuptex "pdfupTeX"
-                    "/usr/texbin/ptex2pdf -u -e -ot '%S %(mode)'"
-                    "/usr/texbin/ptex2pdf -u -l -ot '%S %(mode)'"
+                    "/Library/TeX/texbin/ptex2pdf -u -e -ot '%S %(mode)'"
+                    "/Library/TeX/texbin/ptex2pdf -u -l -ot '%S %(mode)'"
                     "euptex")))
   (setq japanese-TeX-engine-default 'pdfuptex)
 
@@ -52,31 +52,31 @@
             (function (lambda ()
                         (add-to-list 'TeX-command-list
                                      '("Latexmk"
-                                       "/usr/texbin/latexmk %t"
+                                       "/Library/TeX/texbin/latexmk %t"
                                        TeX-run-TeX nil (latex-mode) :help "Run Latexmk"))
                         (add-to-list 'TeX-command-list
                                      '("Latexmk-pdfupLaTeX"
-                                       "/usr/texbin/latexmk -e '$latex=q/uplatex %%O %S %(mode) %%S/' -e '$bibtex=q/upbibtex %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/mendex %%O -U -o %%D %%S/' -e '$dvipdf=q/dvipdfmx %%O -o %%D %%S/' -norc -gg -pdfdvi %t"
+                                       "/Library/TeX/texbin/latexmk -e '$latex=q/uplatex %%O %S %(mode) %%S/' -e '$bibtex=q/upbibtex %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/mendex %%O -U -o %%D %%S/' -e '$dvipdf=q/dvipdfmx %%O -o %%D %%S/' -norc -gg -pdfdvi %t"
                                        TeX-run-TeX nil (latex-mode) :help "Run Latexmk-pdfupLaTeX"))
                         (add-to-list 'TeX-command-list
                                      '("Latexmk-pdfupLaTeX2"
-                                       "/usr/texbin/latexmk -e '$latex=q/uplatex %%O %S %(mode) %%S/' -e '$bibtex=q/upbibtex %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/mendex %%O -U -o %%D %%S/' -e '$dvips=q/dvips %%O -z -f %%S | convbkmk -u > %%D/' -e '$ps2pdf=q/ps2pdf %%O %%S %%D/' -norc -gg -pdfps %t"
+                                       "/Library/TeX/texbin/latexmk -e '$latex=q/uplatex %%O %S %(mode) %%S/' -e '$bibtex=q/upbibtex %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/mendex %%O -U -o %%D %%S/' -e '$dvips=q/dvips %%O -z -f %%S | convbkmk -u > %%D/' -e '$ps2pdf=q/ps2pdf %%O %%S %%D/' -norc -gg -pdfps %t"
                                        TeX-run-TeX nil (latex-mode) :help "Run Latexmk-pdfupLaTeX2"))
                         (add-to-list 'TeX-command-list
                                      '("Latexmk-pdfLaTeX"
-                                       "/usr/texbin/latexmk -e '$pdflatex=q/pdflatex %%O %S %(mode) %%S/' -e '$bibtex=q/bibtex %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/makeindex %%O -o %%D %%S/' -norc -gg -pdf %t"
+                                       "/Library/TeX/texbin/latexmk -e '$pdflatex=q/pdflatex %%O %S %(mode) %%S/' -e '$bibtex=q/bibtex %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/makeindex %%O -o %%D %%S/' -norc -gg -pdf %t"
                                        TeX-run-TeX nil (latex-mode) :help "Run Latexmk-pdfLaTeX"))
                         (add-to-list 'TeX-command-list
                                      '("Latexmk-LuaLaTeX"
-                                       "/usr/texbin/latexmk -e '$pdflatex=q/lualatex %%O %S %(mode) %%S/' -e '$bibtex=q/bibtexu %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/makeindex %%O -o %%D %%S/' -norc -gg -pdf %t"
+                                       "/Library/TeX/texbin/latexmk -e '$pdflatex=q/lualatex %%O %S %(mode) %%S/' -e '$bibtex=q/bibtexu %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/makeindex %%O -o %%D %%S/' -norc -gg -pdf %t"
                                        TeX-run-TeX nil (latex-mode) :help "Run Latexmk-LuaLaTeX"))
                         (add-to-list 'TeX-command-list
                                      '("Latexmk-LuaJITLaTeX"
-                                       "/usr/texbin/latexmk -e '$pdflatex=q/luajitlatex %%O %S %(mode) %%S/' -e '$bibtex=q/bibtexu %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/makeindex %%O -o %%D %%S/' -norc -gg -pdf %t"
+                                       "/Library/TeX/texbin/latexmk -e '$pdflatex=q/luajitlatex %%O %S %(mode) %%S/' -e '$bibtex=q/bibtexu %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/makeindex %%O -o %%D %%S/' -norc -gg -pdf %t"
                                        TeX-run-TeX nil (latex-mode) :help "Run Latexmk-LuaJITLaTeX"))
                         (add-to-list 'TeX-command-list
                                      '("Latexmk-XeLaTeX"
-                                       "/usr/texbin/latexmk -e '$pdflatex=q/xelatex %%O %S %(mode) %%S/' -e '$bibtex=q/bibtexu %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/makeindex %%O -o %%D %%S/' -norc -gg -pdf %t"
+                                       "/Library/TeX/texbin/latexmk -e '$pdflatex=q/xelatex %%O %S %(mode) %%S/' -e '$bibtex=q/bibtexu %%O %%B/' -e '$biber=q/biber %%O --bblencoding=utf8 -u -U --output_safechars %%B/' -e '$makeindex=q/makeindex %%O -o %%D %%S/' -norc -gg -pdf %t"
                                        TeX-run-TeX nil (latex-mode) :help "Run Latexmk-XeLaTeX"))
                         (add-to-list 'TeX-command-list
                                      '("displayline"
@@ -96,11 +96,11 @@
                                        TeX-run-discard-or-function t t :help "Run TeXShop"))
                         (add-to-list 'TeX-command-list
                                      '("TeXworks"
-                                       "/usr/texbin/synctex view -i \"%n:0:%b\" -o %s.pdf -x \"/Applications/TeXworks.app/Contents/MacOS/TeXworks --position=%%{page+1} %%{output}\""
+                                       "/Library/TeX/texbin/synctex view -i \"%n:0:%b\" -o %s.pdf -x \"/Applications/TeXworks.app/Contents/MacOS/TeXworks --position=%%{page+1} %%{output}\""
                                        TeX-run-discard-or-function t t :help "Run TeXworks"))
                         (add-to-list 'TeX-command-list
                                      '("TeXstudio"
-                                       "/usr/texbin/synctex view -i \"%n:0:%b\" -o %s.pdf -x \"/Applications/texstudio.app/Contents/MacOS/texstudio --pdf-viewer-only --page %%{page+1} %%{output}\""
+                                       "/Library/TeX/texbin/synctex view -i \"%n:0:%b\" -o %s.pdf -x \"/Applications/texstudio.app/Contents/MacOS/texstudio --pdf-viewer-only --page %%{page+1} %%{output}\""
                                        TeX-run-discard-or-function t t :help "Run TeXstudio"))
                         (add-to-list 'TeX-command-list
                                      '("Firefox"

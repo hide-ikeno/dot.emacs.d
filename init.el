@@ -20,7 +20,11 @@
 ;;; exec-path
 ;;;=============================================================================
 (add-to-list 'exec-path "/usr/local/bin")
-(add-to-list 'exec-path "/usr/texbin")
+;; (add-to-list 'exec-path "/usr/texbin")
+;;; For OSX El Capitan or later.
+(add-to-list 'exec-path "/Library/TeX/texbin")
+
+(setenv "PATH" (mapconcat 'identity exec-path path-separator))
 
 ;;;=============================================================================
 ;;; Emacs directory and load path
