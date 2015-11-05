@@ -39,6 +39,14 @@
   (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
   )
 
+;;;=============================================================================
+;;; irony-eldoc --- irony-mode support for eldoc-mode
+;;;=============================================================================
+(el-get-bundle irony-eldoc)
+(use-package irony-eldoc
+  :config
+  (add-hook 'irony-mode-hook 'irony-eldoc)
+  )
 
 ;;;=============================================================================
 ;;; ac-irony --- auto-complete for irony-mode
@@ -47,8 +55,9 @@
 (use-package ac-irony
   :config
   (defun my-ac-irony-setup ()
-    (add-to-list 'ac-sources 'ac-source-irony)
+    (yas-minor-mode 1)
     (auto-complete-mode 1)
+    (add-to-list 'ac-sources 'ac-source-irony)
     (bind-key "M-RET" 'ac-complete-irony-async irony-mode-map))
   (add-hook 'irony-mode-hook 'my-ac-irony-setup)
   )
