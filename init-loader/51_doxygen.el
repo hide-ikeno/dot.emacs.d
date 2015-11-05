@@ -25,5 +25,5 @@
 ;;;=============================================================================
 ;;; Doxymacs --- Doxygen + Emacs
 ;;;=============================================================================
-(el-get-bundle doxy-preview)
-(use-package doxy-preview)
+;; (el-get-bundle doxy-preview)
+;; (use-package doxy-preview)
