@@ -7,41 +7,59 @@
 ;;;
 
 ;;;=============================================================================
-;;; Multiple Cursors
-;;;=============================================================================
-(el-get-bundle multiple-cursors)
-(use-package multiple-cursors
-  :bind ("<C-return>" . mc/edit-lines))
-(use-package multiple-cursors-core)
-
-;;;=============================================================================
-;;; region-bindings-mode
-;;;=============================================================================
-(el-get-bundle region-bindings-mode)
-(use-package region-bindings-mode
-  :defines region-bindings-mode-map
-  :commands region-bindings-mode-enable
-  :config
-  ;; Multiple cursors keybindings
-  (bind-keys :map region-bindings-mode-map
-             ("a" . mc/mark-all-like-this-dwim)
-             ("p" . mc/mark-previous-like-this)
-             ("n" . mc/mark-next-like-this)
-             ("m" . mc/mark-more-like-this-extended)
-             ;; ("TAB"   . mc/cycle-forward)
-             ;; ("S-TAB" . mc/cycle-backward)
-             )
-  (region-bindings-mode-enable)
-  )
-;;;=============================================================================
 ;;; Expand region
 ;;;=============================================================================
 (el-get-bundle expand-region)
 (use-package expand-region
   :bind (("C-=" . er/expand-region)
          ("C--" . er/contract-region))
-  :init
-  (bind-keys :map region-bindings-mode-map
-             ("C-=" . er/expand-region)
-             ("C--" . er/contract-region))
   )
+
+;;;=============================================================================
+;;; Multiple Cursors
+;;;=============================================================================
+(el-get-bundle multiple-cursors)
+(use-package multiple-cursors
+  :config
+  (use-package expand-region)
+  (defhydra hydra-multiple-cursors (:hint nil)
+    "
+     ^Up^            ^Down^        ^Other^
+----------------------------------------------
+[_p_]   Next    [_n_]   Next    [_l_] Edit lines
+[_P_]   Skip    [_N_]   Skip    [_a_] Mark all DWIM
+[_M-p_] Unmark  [_M-n_] Unmark  [_r_] Mark by regexp
+                                [_q_] Quit"
+  ("l" mc/edit-lines :exit t)
+  ("a" mc/mark-all-dwim)
+  ("n" mc/mark-next-like-this)
+  ("N" mc/skip-to-next-like-this)
+  ("M-n" mc/unmark-next-like-this)
+  ("p" mc/mark-previous-like-this)
+  ("P" mc/skip-to-previous-like-this)
+  ("M-p" mc/unmark-previous-like-this)
+  ("r" mc/mark-all-in-region-regexp :exit t)
+  ("q" nil))
+  :bind ("<C-return>" . hydra-multiple-cursors/body))
+  ;; :bind ("<C-return>" . mc/edit-lines))
+(use-package multiple-cursors-core)
+
+;;;=============================================================================
+;;; region-bindings-mode
+;;;=============================================================================
+;; (el-get-bundle region-bindings-mode)
+;; (use-package region-bindings-mode
+;;   :defines region-bindings-mode-map
+;;   :commands region-bindings-mode-enable
+;;   :config
+;;   ;; Multiple cursors keybindings
+;;   (bind-keys :map region-bindings-mode-map
+;;              ("a" . mc/mark-all-like-this-dwim)
+;;              ("p" . mc/mark-previous-like-this)
+;;              ("n" . mc/mark-next-like-this)
+;;              ("m" . mc/mark-more-like-this-extended)
+;;              ;; ("TAB"   . mc/cycle-forward)
+;;              ;; ("S-TAB" . mc/cycle-backward)
+;;              )
+;;   (region-bindings-mode-enable)
+;;   )
