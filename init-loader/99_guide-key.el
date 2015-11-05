@@ -54,12 +54,12 @@
   (add-hook 'rst-mode-hook 'guide-key/my-hook-function-for-rst-mode)
   (add-hook 'rst-minor-mode-hook 'guide-key/my-hook-function-for-rst-mode)
 
-  ;; -- flycheck
-  (defun guide-key/my-hook-function-for-flycheck-mode ()
-    (guide-key/add-local-guide-key-sequence "C-c")
-    (guide-key/add-local-guide-key-sequence "C-c !")
-    (guide-key/add-local-highlight-command-regexp "flycheck-"))
-  (add-hook 'flycheck-mode-hook 'guide-key/my-hook-function-for-flycheck-mode)
+  ;; ;; -- flycheck
+  ;; (defun guide-key/my-hook-function-for-flycheck-mode ()
+  ;;   (guide-key/add-local-guide-key-sequence "C-c")
+  ;;   (guide-key/add-local-guide-key-sequence "C-c !")
+  ;;   (guide-key/add-local-highlight-command-regexp "flycheck-"))
+  ;; (add-hook 'flycheck-mode-hook 'guide-key/my-hook-function-for-flycheck-mode)
 
   ;; -- projectile
   (defun guide-key/my-hook-function-for-projectile ()

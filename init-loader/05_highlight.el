@@ -79,3 +79,27 @@
   :config
   (volatile-highlights-mode t)
   )
+
+
+;;;=============================================================================
+;;; highlight-symbol --- automatic and manual symbol highlighting for Emacs
+;;;=============================================================================
+(el-get-bundle highlight-symbol)
+(use-package highlight-symbol
+  :defines
+  highlight-symbol-idle-delay
+  :functions
+  highlight-symbol-mode
+  highlight-symbol-nav-mode
+  highlight-symbol-query-replace
+  :config
+  ;; 1秒後自動ハイライトされるようになる
+  (setq highlight-symbol-idle-delay 1.0)
+  ;; 自動ハイライトをしたいならば
+  (add-hook 'prog-mode-hook 'highlight-symbol-mode)
+  ;; ソースコードにおいてM-p/M-nでシンボル間を移動
+  (add-hook 'prog-mode-hook 'highlight-symbol-nav-mode)
+  ;; シンボル置換
+  :bind
+  ("M-s M-r" . highlight-symbol-query-replace)
+  )
