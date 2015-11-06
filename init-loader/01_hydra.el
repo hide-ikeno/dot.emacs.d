@@ -17,7 +17,12 @@
 ;;     ("g" text-scale-increase "in")
 ;;     ("l" text-scale-decrease "out")))
 
+(eval-and-compile
+  (defun hydra-load-path()
+    (expand-file-name "hydra" el-get-dir)))
+
 (use-package hydra
+  :load-path (lambda() (hydra-load-path))
   :config
   (use-package lv)
   ;; -- Zoom in/out (from hydra-examples.el)
