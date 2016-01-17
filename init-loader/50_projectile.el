@@ -28,6 +28,7 @@
   projectile-indexing-method
   projectile-enable-caching
   projectile-find-dir-other-window
+  hydra-projectile-other-window
   :init
   (projectile-global-mode)
   :config
