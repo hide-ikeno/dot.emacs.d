@@ -53,7 +53,7 @@
 ;;;=============================================================================
 ;;; dired-hacks -- Collection of useful dired additions
 ;;;=============================================================================
-(el-get-bundle dired-hacks)
+(el-get-bundle dired-hacks :depends (f))
 
 (use-package dired-filter)
 (use-package dired-subtree)

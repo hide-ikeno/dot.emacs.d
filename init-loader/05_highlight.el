@@ -103,3 +103,4 @@
   :bind
   ("M-s M-r" . highlight-symbol-query-replace)
   )
+
