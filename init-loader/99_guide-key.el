@@ -62,10 +62,10 @@
   ;; (add-hook 'flycheck-mode-hook 'guide-key/my-hook-function-for-flycheck-mode)
 
   ;; -- projectile
-  (defun guide-key/my-hook-function-for-projectile ()
-    (guide-key/add-local-guide-key-sequence "C-c p")
-    (guide-key/add-local-highlight-command-regexp "projectile-"))
-  (add-hook 'projectile-mode-hook 'guide-key/my-hook-function-for-projectile)
+  ;; (defun guide-key/my-hook-function-for-projectile ()
+  ;;   (guide-key/add-local-guide-key-sequence "C-c p")
+  ;;   (guide-key/add-local-highlight-command-regexp "projectile-"))
+  ;; (add-hook 'projectile-mode-hook 'guide-key/my-hook-function-for-projectile)
 
   ;; -- doxymacs
   (defun guide-key/my-hook-function-for-doxymacs ()
