@@ -86,7 +86,7 @@
          ("\\.rest$" . rst-mode))
   :config
   ;; 背景が黒い場合はこうしないと見出しが見づらい
-  (setq frame-background-mode 'dark)
+  (setq frame-background-mode (frame-parameter nil 'background-mode))
   ;; 全部スペースでインデントしましょう
   (add-hook 'rst-mode-hook '(lambda() (setq indent-tabs-mode nil)))
   )
