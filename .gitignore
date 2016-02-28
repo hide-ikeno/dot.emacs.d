@@ -2,6 +2,7 @@
 *~
 *.elc
 .git
+anaconda-mode
 el-get
 */el-get
 elpa
