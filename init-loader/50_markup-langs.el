@@ -20,12 +20,13 @@
 ;; C-c/S ~ View the current settings (pandoc-view-settings)
 ;; C-c/c ~ Insert a new (@)-item (pandoc-insert-@)
 ;; C-c/C ~ Select and insert a (@)-label (pandoc-select-@)
-(el-get-bundle pandoc-mode
-  :depend hydra)
-(use-package pandoc-mode
-  :config
-  (add-hook 'markdown-mode-hook 'pandoc-mode)
-  )
+
+;; (el-get-bundle pandoc-mode
+;;   :depend hydra)
+;; (use-package pandoc-mode
+;;   :config
+;;   (add-hook 'markdown-mode-hook 'pandoc-mode)
+;;   )
 
 ;;;=============================================================================
 ;;; YAML mode --- YAML Ain't Markup Language
@@ -53,10 +54,21 @@
 ;;;=============================================================================
 (el-get-bundle markdown-mode)
 (use-package markdown-mode
-  :mode (("\\.text\\'"     . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode)
-         ("\\.md\\'"       . markdown-mode))
+  :defines
+  gfm-mode-hook
+  markdown-command
+  markdown-command-needs-filename
+  markdown-enable-math
+  ;; Major mode for editing Github Fravored Markdown
+  :mode (("\\.text\\'"     . gfm-mode)
+         ("\\.markdown\\'" . gfm-mode)
+         ("\\.md\\'"       . gfm-mode))
+  :config
+  (setq markdown-command "/usr/local/var/pyenv/shims/grip --export"
+        markdown-command-needs-filename t
+        markdown-enable-math t)
   )
+
 
 ;;;=============================================================================
 ;;; rst-mode -- major mode for editing reStructuredText

@@ -49,15 +49,24 @@
   )
 
 ;;;=============================================================================
-;;; ac-irony --- auto-complete for irony-mode
+;;; company-irony --- auto-complete for irony-mode
 ;;;=============================================================================
-(el-get-bundle ac-irony)
-(use-package ac-irony
+(el-get-bundle company-irony)
+(use-package company-irony
   :config
-  (defun my-ac-irony-setup ()
-    (yas-minor-mode 1)
-    (auto-complete-mode 1)
-    (add-to-list 'ac-sources 'ac-source-irony)
-    (bind-key "M-RET" 'ac-complete-irony-async irony-mode-map))
-  (add-hook 'irony-mode-hook 'my-ac-irony-setup)
-  )
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-irony)))
+
+;; ;;;=============================================================================
+;; ;;; ac-irony --- auto-complete for irony-mode
+;; ;;;=============================================================================
+;; (el-get-bundle ac-irony)
+;; (use-package ac-irony
+;;   :config
+;;   (defun my-ac-irony-setup ()
+;;     (yas-minor-mode 1)
+;;     (auto-complete-mode 1)
+;;     (add-to-list 'ac-sources 'ac-source-irony)
+;;     (bind-key "M-RET" 'ac-complete-irony-async irony-mode-map))
+;;   (add-hook 'irony-mode-hook 'my-ac-irony-setup)
+;;   )

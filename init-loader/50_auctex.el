@@ -9,7 +9,8 @@
 ;;; AucTeX
 ;;;=============================================================================
 (el-get-bundle auctex)
-(el-get-bundle auto-complete-auctex)
+;; (el-get-bundle auto-complete-auctex)
+(el-get-bundle company-auctex)
 
 (use-package tex-jp
   :defines

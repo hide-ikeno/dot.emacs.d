@@ -48,12 +48,19 @@
 ;;; Python.
 ;;;=============================================================================
 (el-get-bundle anaconda-mode)
-(el-get-bundle ac-anaconda)
+(el-get-bundle company-anaconda)
+
 (use-package anaconda-mode
   :config
   (add-hook 'python-mode-hook 'anaconda-mode)
   (add-hook 'python-mode-hook 'eldoc-mode)
-  (use-package ac-anaconda))
+  )
+
+(use-package company-anaconda
+  :config
+  (eval-after-load "company"
+    '(add-to-list 'company-backends 'company-anaconda))
+  )
 
 ;; ;;;=============================================================================
 ;; ;;; Jedi --- Python auto-completion for Emacs

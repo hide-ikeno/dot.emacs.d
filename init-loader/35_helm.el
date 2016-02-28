@@ -56,14 +56,14 @@
   ;; helm-migemo
   ;;
   (helm-migemo-mode 1)
-  ;;
-  ;; ac-helm --- helm source for auto-complete
-  ;;
-  (use-package ac-helm
-    :bind ("M-/" . ac-complete-with-helm)
-    :config
-    (bind-key "C-;" 'ac-complete-with-helm ac-complete-mode-map)
-    )
+  ;; ;;
+  ;; ;; ac-helm --- helm source for auto-complete
+  ;; ;;
+  ;; (use-package ac-helm
+  ;;   :bind ("M-/" . ac-complete-with-helm)
+  ;;   :config
+  ;;   (bind-key "C-;" 'ac-complete-with-helm ac-complete-mode-map)
+  ;;   )
   ;;
   ;; Keybindings
   ;;

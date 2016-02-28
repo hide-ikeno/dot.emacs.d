@@ -22,7 +22,8 @@
 (add-to-list 'exec-path "/usr/local/bin")
 ;; (add-to-list 'exec-path "/usr/texbin")
 ;;; For OSX El Capitan or later.
-(add-to-list 'exec-path "/Library/TeX/texbin")
+(when (eq system-type 'darwin)
+  (add-to-list 'exec-path "/Library/TeX/texbin"))
 
 (setenv "PATH" (mapconcat 'identity exec-path path-separator))
 
@@ -68,7 +69,7 @@
 ;;;   <https://github.com/jwiegley/use-package>
 ;;;=============================================================================
 (el-get-bundle use-package)
-(el-get-bundle bind-key)
+;; (el-get-bundle bind-key)
 (el-get-bundle diminish)
 
 (eval-when-compile
@@ -76,9 +77,6 @@
   )
 (require 'bind-key)
 (require 'diminish)
-;; (require 'use-package)
-;; (setq use-package-verbose t)
-;; (setq use-package-minimum-reported-time 0.001)
 
 ;;;=============================================================================
 ;;; init-loader -- loader for configuration files
