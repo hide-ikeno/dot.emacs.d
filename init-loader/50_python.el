@@ -43,51 +43,20 @@
   :config
   (pyenv-mode))
 
-;;;=============================================================================
-;;; Anaconda mode -- Code navigation, documentation lookup and completion for
-;;; Python.
-;;;=============================================================================
-(el-get-bundle anaconda-mode)
-(el-get-bundle company-anaconda)
-
-(use-package anaconda-mode
-  :config
-  (add-hook 'python-mode-hook 'anaconda-mode)
-  (add-hook 'python-mode-hook 'eldoc-mode)
-  )
-
-(use-package company-anaconda
-  :config
-  (eval-after-load "company"
-    '(add-to-list 'company-backends 'company-anaconda))
-  )
-
 ;; ;;;=============================================================================
-;; ;;; Jedi --- Python auto-completion for Emacs
+;; ;;; Anaconda mode -- Code navigation, documentation lookup and completion for
+;; ;;; Python.
 ;; ;;;=============================================================================
-;; (el-get-bundle jedi)
-;; (use-package jedi
-;;   :defines
-;;   jedi:complete-on-dot
-;;   jedi:environment-root
-;;   jedi:environment-virtualenv
+;; (el-get-bundle anaconda-mode)
+;; (el-get-bundle company-anaconda)
+
+;; (use-package anaconda-mode
 ;;   :config
-;;   ;; (setq jedi:environment-root "/usr/local/var/pyenv/versions/miniconda3-3.16.0")
-;;   ;; (setq jedi:environment-virtualenv '("/usr/local/var/pyenv/versions/miniconda3-3.16.0/bin/virtualenv"))
-;;   (add-hook 'python-mode-hook 'jedi:setup)
-;;   (setq jedi:complete-on-dot t) ;; optional
+;;   (add-hook 'python-mode-hook 'anaconda-mode)
+;;   (add-hook 'python-mode-hook 'eldoc-mode)
 ;;   )
 
-;; ;;;=============================================================================
-;; ;;; Jedi-Direx --- Python auto-completion for Emacs
-;; ;;;=============================================================================
-;; (el-get-bundle jedi-direx)
-;; (use-package jedi-direx
-;;   :commands
-;;   jedi-direx:setup
-;;   jedi-direx:pop-to-buffer
+;; (use-package company-anaconda
 ;;   :config
-;;   (with-eval-after-load "python"
-;;     (bind-key "C-c x" 'jedi-direx:pop-to-buffer python-mode-map))
-;;   (add-hook 'jedi-mode-hook 'jedi-direx:setup)
+;;   (add-to-list 'company-backends 'company-anaconda)
 ;;   )

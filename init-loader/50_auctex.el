@@ -9,8 +9,6 @@
 ;;; AucTeX
 ;;;=============================================================================
 (el-get-bundle auctex)
-;; (el-get-bundle auto-complete-auctex)
-(el-get-bundle company-auctex)
 
 (use-package tex-jp
   :defines
@@ -123,3 +121,17 @@
   (setq kinsoku-limit 10)
   )
 
+;;;=============================================================================
+;;; Auto completion for AucTeX using company-mode
+;;;=============================================================================
+(el-get-bundle company-auctex)
+(use-package company-auctex
+  :config
+  ;; Note: require company-math
+  (defun my-latex-mode-setup ()
+    (setq-local company-backends
+                (append '((company-math-symbols-latex company-latex-commands))
+                        company-backends)))
+  (add-hook 'LaTeX-mode-hook 'my-latex-mode-setup)
+  (company-auctex-init)
+  )

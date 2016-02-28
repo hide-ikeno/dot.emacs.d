@@ -11,9 +11,14 @@
 ;;;=============================================================================
 (el-get-bundle magit)
 (use-package magit
-  :defines magit-last-seen-setup-instructions
+  :defines
+  magit-completing-read-function
+  magit-last-seen-setup-instructions
   :config
   (setq magit-last-seen-setup-instructions "1.4.0")
+  (use-package ivy
+    :config
+    (setq magit-completing-read-function 'ivy-completing-read))
   )
 
 ;;;=============================================================================
@@ -38,11 +43,31 @@
 (use-package gist)
 
 ;;;=============================================================================
+;;; git-timemachine --- Travel Back and Forward in Git History
+;;;=============================================================================
+(el-get-bundle git-timemachine)
+;; Visit a git-controlled file and issue
+;;   M-x git-timemachine
+;; or
+;;   M-x git-timemachine-toggle
+;; if you just need to toggle the timemachine
+;;
+;; Keybinds:
+;;   p: Visit previous historic version
+;;   n: Visit next historic version
+;;   w: Copy the abbreviated hash of the current historic version
+;;   W: Copy the full hash of the current historic version
+;;   g: Goto nth revision
+;;   q: Exit the time machine.
+;;
+(use-package git-timemachine)
+
+;;;=============================================================================
 ;;; helm-ls-git --- list git files using helm interactive
 ;;;=============================================================================
-(el-get-bundle helm-ls-git)
-(use-package helm-ls-git
-  :defines helm-ls-git-fuzzy-match
-  :bind ("C-x C-g" . helm-ls-git-ls)
-  :config (setq helm-ls-git-fuzzy-match t)
-  )
+;; (el-get-bundle helm-ls-git)
+;; (use-package helm-ls-git
+;;   :defines helm-ls-git-fuzzy-match
+;;   :bind ("C-x C-g" . helm-ls-git-ls)
+;;   :config (setq helm-ls-git-fuzzy-match t)
+;;   )

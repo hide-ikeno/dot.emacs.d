@@ -14,7 +14,6 @@
 (use-package projectile
   :commands
   projectile-global-mode
-  helm-projectile-on
   projectile-ag
   projectile-invalidate-cache
   projectile-find-dir
@@ -25,22 +24,17 @@
   projectile-remove-known-project
   projectile-find-dir-other-window
   :defines
-  projectile-indexing-method
+  projectile-completion-system
   projectile-enable-caching
   projectile-find-dir-other-window
+  projectile-indexing-method
   hydra-projectile-other-window
   :init
   (projectile-global-mode)
   :config
+  (setq projectile-completion-system 'ivy)
   (setq projectile-indexing-method 'native)
   (setq projectile-enable-caching t)
-  (use-package helm-projectile
-    :defines helm-projectile-fuzzy-match
-    :commands helm-projectile-on
-    :config
-    (setq helm-projectile-fuzzy-match t)
-    (helm-projectile-on)
-    )
 
   (defhydra hydra-projectile-other-window (:color teal)
     "projectile-other-window"

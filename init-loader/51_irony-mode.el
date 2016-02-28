@@ -1,13 +1,9 @@
 ;;; -*- mode: lisp-interaction; coding: utf-8-unix; indent-tabs-mode: nil; -*-
 ;;;
 ;;; File: 51_irony-mode.el
-;;; Description: Customize 
+;;; Description: Customize irony-mode for C/C++
 ;;;
 ;;; Code:
-
-;;;=============================================================================
-;;; DoxyMacs
-;;;=============================================================================
 
 ;;;=============================================================================
 ;;; Irony-Mode --- A C/C++ minor mode powered by libclang
@@ -22,10 +18,10 @@
   ;; replace the `completion-at-point' and `complete-symbol' bindings in
   ;; irony-mode's buffers by irony-mode's function
   (defun my-irony-mode-hook ()
-        (define-key irony-mode-map [remap completion-at-point]
-          'irony-completion-at-point-async)
-        (define-key irony-mode-map [remap complete-symbol]
-          'irony-completion-at-point-async))
+    (define-key irony-mode-map [remap completion-at-point]
+      'irony-completion-at-point-async)
+    (define-key irony-mode-map [remap complete-symbol]
+      'irony-completion-at-point-async))
   (add-hook 'irony-mode-hook 'my-irony-mode-hook)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   )
@@ -49,24 +45,13 @@
   )
 
 ;;;=============================================================================
-;;; company-irony --- auto-complete for irony-mode
+;;; company-irony
 ;;;=============================================================================
 (el-get-bundle company-irony)
+(el-get-bundle company-irony-c-headers)
 (use-package company-irony
   :config
-  (eval-after-load 'company
-    '(add-to-list 'company-backends 'company-irony)))
-
-;; ;;;=============================================================================
-;; ;;; ac-irony --- auto-complete for irony-mode
-;; ;;;=============================================================================
-;; (el-get-bundle ac-irony)
-;; (use-package ac-irony
-;;   :config
-;;   (defun my-ac-irony-setup ()
-;;     (yas-minor-mode 1)
-;;     (auto-complete-mode 1)
-;;     (add-to-list 'ac-sources 'ac-source-irony)
-;;     (bind-key "M-RET" 'ac-complete-irony-async irony-mode-map))
-;;   (add-hook 'irony-mode-hook 'my-ac-irony-setup)
-;;   )
+  (use-package company
+    :config
+    (add-to-list 'company-backends '(company-irony-c-headers company-irony)))
+  )

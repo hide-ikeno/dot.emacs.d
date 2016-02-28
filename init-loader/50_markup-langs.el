@@ -69,7 +69,6 @@
         markdown-enable-math t)
   )
 
-
 ;;;=============================================================================
 ;;; rst-mode -- major mode for editing reStructuredText
 ;;;   <http://joostkremers.github.io/pandoc-mode/>

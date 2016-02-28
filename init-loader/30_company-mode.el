@@ -18,12 +18,13 @@
   :commands
   global-company-mode
   company-show-doc-buffer
+  :init
+  (global-company-mode) ;; Turn on company-mode
   :config
   (setq company-idle-delay 0.2          ; default 0.5
         company-minimum-prefix-length 4 ; default 4
         company-selection-wrap-around t ; wrap-around candidates
         )
-
   ;; company-active-map
   ;; M-n     次の候補選択
   ;; M-p     前の候補選択
@@ -36,9 +37,6 @@
   (bind-keys :map company-active-map
              ;; M-? :  doc を別バッファに表示
              ("M-?" . company-show-doc-buffer))
-
-  ;; Turn on company-mode
-  (add-hook 'after-init-hook 'global-company-mode)
   )
 
 
@@ -52,4 +50,3 @@
   ;; global activation of the unicode symbol completion
   (add-to-list 'company-backends 'company-math-symbols-unicode)
   )
-
