@@ -67,8 +67,6 @@
   avy-migemo-goto-word-1
   avy-migemo-mode
   :defines
-
-:defines
   avy-background
   :config
   ;; Darken background
