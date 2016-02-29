@@ -11,6 +11,9 @@
 ;;;=============================================================================
 (el-get-bundle expand-region)
 (use-package expand-region
+  :commands
+  er/expand-region
+  er/contract-region
   :bind (("C-=" . er/expand-region)
          ("C--" . er/contract-region))
   )
@@ -20,6 +23,16 @@
 ;;;=============================================================================
 (el-get-bundle multiple-cursors)
 (use-package multiple-cursors
+  :commands
+  mc/edit-lines
+  mc/mark-all-dwim
+  mc/mark-next-like-this
+  mc/skip-to-next-like-this
+  mc/unmark-next-like-this
+  mc/mark-previous-like-this
+  mc/skip-to-previous-like-this
+  mc/unmark-previous-like-this
+  mc/mark-all-in-region-regexp
   :config
   (use-package expand-region)
   (defhydra hydra-multiple-cursors (:hint nil)
@@ -29,7 +42,7 @@
 [_p_]   Next    [_n_]   Next    [_l_] Edit lines
 [_P_]   Skip    [_N_]   Skip    [_a_] Mark all DWIM
 [_M-p_] Unmark  [_M-n_] Unmark  [_r_] Mark by regexp
-                                [_q_] Quit"
+[_q_] Quit"
   ("l" mc/edit-lines :exit t)
   ("a" mc/mark-all-dwim)
   ("n" mc/mark-next-like-this)
@@ -41,7 +54,7 @@
   ("r" mc/mark-all-in-region-regexp :exit t)
   ("q" nil))
   :bind ("<C-return>" . hydra-multiple-cursors/body))
-  ;; :bind ("<C-return>" . mc/edit-lines))
+
 (use-package multiple-cursors-core)
 
 ;;;=============================================================================

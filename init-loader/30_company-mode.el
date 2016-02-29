@@ -12,6 +12,7 @@
 (use-package company
   :defines
   company-active-map
+  company-backends
   company-idle-delay
   company-minimum-prefix-length
   company-selection-wrap-around

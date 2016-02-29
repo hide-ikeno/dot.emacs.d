@@ -24,7 +24,7 @@
 (use-package hydra
   :load-path (lambda() (hydra-load-path))
   :config
-  (use-package lv)
+  (use-package lv :commands lv-message)
   ;; -- Zoom in/out (from hydra-examples.el)
   (defhydra hydra-zoom (global-map "<f2>")
     "zoom"

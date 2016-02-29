@@ -126,6 +126,8 @@
 ;;;=============================================================================
 (el-get-bundle company-auctex)
 (use-package company-auctex
+  :commands
+  company-auctex-init
   :config
   ;; Note: require company-math
   (defun my-latex-mode-setup ()
