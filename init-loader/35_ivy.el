@@ -18,6 +18,7 @@
   ivy-count-format
   ivy-display-style
   ivy-height
+  ivy-re-builders-alist
   ivy-use-virtual-buffers
   :commands
   ivy-mode
@@ -43,13 +44,14 @@
          ("M-y"     . counsel-yank-pop)
          )
   :config
-(use-package avy-migemo-e.g.swiper)
-(use-package avy-migemo-e.g.counsel)
+  (use-package avy-migemo-e.g.swiper)
+  (use-package avy-migemo-e.g.counsel)
   (setq ivy-use-virtual-buffers t
         ivy-height 15
         ivy-count-format "(%d/%d) "
         ivy-display-style 'fancy
         )
+  ;; (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   (ivy-mode 1)
   (bind-keys :map help-map
              ("f" . counsel-describe-v)
