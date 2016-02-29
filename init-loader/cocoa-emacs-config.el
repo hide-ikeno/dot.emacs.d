@@ -14,10 +14,10 @@
 ;; Font
 
 (set-face-attribute 'default nil
-                    :family "Ricty"
+                    :family "Ricty Diminished Discord"
                     :height 165)
 (set-fontset-font nil 'unicode
-                  (font-spec :family "Ricty"))
+                  (font-spec :family "Ricty Diminished Discord"))
 
 (modify-all-frames-parameters (list (cons 'alpha  '(90 80 50 30))))
 

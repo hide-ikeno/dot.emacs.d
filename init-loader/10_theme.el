@@ -4,6 +4,7 @@
 ;;; Description: Customize Emacs themes
 ;;;
 
+(el-get-bundle atom-one-dark-theme)
 (el-get-bundle birds-of-paradise-plus-theme)
 (el-get-bundle color-theme-zenburn)
 (el-get-bundle darkmine-theme)
@@ -23,11 +24,15 @@
 ;; (load-theme 'wombat t)
 
 ;;; Third-party themes
+;; (use-package atom-one-dark-theme)
+;; (load-theme 'atom-one-dark t)
 ;; (load-theme 'birds-of-paradise-plus t)
 ;; (load-theme 'dream t)
 ;; (load-theme 'monokai t)
-;; (load-theme 'material-light t)
-(load-theme 'tomorrow-night-eighties t)
+(use-package material-theme
+  :config
+  (load-theme 'material t))
+;; (load-theme 'tomorrow-night-eighties t)
 ;; (load-theme 'tomorrow-night-blue t)
 ;; (load-theme 'tomorrow-night-bright t)
 ;; (load-theme 'tomorrow-night t)
