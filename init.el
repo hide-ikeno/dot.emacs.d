@@ -23,7 +23,8 @@
 ;; (add-to-list 'exec-path "/usr/texbin")
 ;;; For OSX El Capitan or later.
 (when (eq system-type 'darwin)
-  (add-to-list 'exec-path "/Library/TeX/texbin"))
+  (add-to-list 'exec-path "/Library/TeX/texbin")
+  (add-to-list 'exec-path "/usr/local/opt/llvm/bin"))
 
 (setenv "PATH" (mapconcat 'identity exec-path path-separator))
 
