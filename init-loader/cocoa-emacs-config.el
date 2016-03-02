@@ -19,7 +19,7 @@
 (set-fontset-font nil 'unicode
                   (font-spec :family "Ricty Diminished Discord"))
 
-(modify-all-frames-parameters (list (cons 'alpha  '(90 80 50 30))))
+(modify-all-frames-parameters (list (cons 'alpha  '(80 70 50 30))))
 
 ;; avoid hiding with M-h
 (defvar mac-pass-command-to-system nil)
