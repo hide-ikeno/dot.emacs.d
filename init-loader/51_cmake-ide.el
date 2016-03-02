@@ -1,7 +1,7 @@
 ;;; -*- mode: lisp-interaction; coding: utf-8-unix; indent-tabs-mode: nil; -*-
 ;;;
-;;; File: 51_irony-mode.el
-;;; Description: Customize irony-mode for C/C++
+;;; File: 51_cmake-ide.el
+;;; Description: Make Emacs as C/C++ IDE
 ;;;
 ;;; Code:
 
@@ -55,3 +55,25 @@
     :config
     (add-to-list 'company-backends '(company-irony-c-headers company-irony)))
   )
+
+;;;=============================================================================
+;;; RTags -- A c/c++ client/server indexer for c/c++/objc[++] with integration
+;;;          for Emacs based on clang <https://github.com/Andersbakken/rtags>
+;;;
+;;; RTags server and client must be installed separatelly
+;;;=============================================================================
+(el-get-bundle rtags)
+(use-package rtags
+  :commands
+  rtags-enable-standard-keybindings
+  :config
+  (rtags-enable-standard-keybindings c-mode-base-map))
+
+;;;=============================================================================
+;;; cmake-ide -- Use Emacs as a C/C++ IDE
+;;;=============================================================================
+(el-get-bundle cmake-ide
+  :commands
+  cmake-ide-setup
+  :config
+  (cmake-ide-setup))
