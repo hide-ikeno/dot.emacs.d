@@ -54,6 +54,13 @@
   (add-hook 'rst-mode-hook 'guide-key/my-hook-function-for-rst-mode)
   (add-hook 'rst-minor-mode-hook 'guide-key/my-hook-function-for-rst-mode)
 
+  ;; -- rtags
+  (defun guide-key/my-hook-function-for-rtags ()
+    (guide-key/add-local-guide-key-sequence "C-c")
+    (guide-key/add-local-guide-key-sequence "C-c r")
+    (guide-key/add-local-highlight-command-regexp "rtags-"))
+  (add-hook 'c-mode-common-hook 'guide-key/my-hook-function-for-rtags)
+
   ;; ;; -- flycheck
   ;; (defun guide-key/my-hook-function-for-flycheck-mode ()
   ;;   (guide-key/add-local-guide-key-sequence "C-c")

@@ -10,7 +10,12 @@
 ;;;=============================================================================
 ;; (el-get-bundle clang-format)
 (use-package clang-format
+  :defines
+  clang-format-executable
+  :commands
+  clang-format-region
   :config
+  (setq clang-format-executable "/usr/local/bin/clang-format")
   (bind-key "C-M-\\" 'clang-format-region c++-mode-map)
   )
 

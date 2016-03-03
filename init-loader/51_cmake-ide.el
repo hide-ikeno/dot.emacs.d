@@ -67,7 +67,8 @@
   :commands
   rtags-enable-standard-keybindings
   :config
-  (rtags-enable-standard-keybindings c-mode-base-map))
+  (rtags-enable-standard-keybindings c-mode-base-map)
+  )
 
 ;;;=============================================================================
 ;;; cmake-ide -- Use Emacs as a C/C++ IDE
