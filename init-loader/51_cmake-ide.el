@@ -66,8 +66,18 @@
 (use-package rtags
   :commands
   rtags-enable-standard-keybindings
+  rtags-find-references-at-point
+  rtags-find-symbol-at-point
+  rtags-location-stack-back
+  rtags-location-stack-forward
   :config
   (rtags-enable-standard-keybindings c-mode-base-map)
+  :bind (:map c-mode-base-map
+              ("M-." . rtags-find-symbol-at-point)
+              ("M-," . rtags-find-reference-at-point)
+              ("C-{" . rtags-location-stack-back)
+              ("C-}" . rtags-location-stack-forward)
+              )
   )
 
 ;;;=============================================================================
@@ -76,5 +86,5 @@
 (el-get-bundle cmake-ide
   :commands
   cmake-ide-setup
-  :config
+  :init
   (cmake-ide-setup))

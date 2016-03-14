@@ -16,6 +16,7 @@
   clang-format-region
   :config
   (setq clang-format-executable "/usr/local/bin/clang-format")
-  (bind-key "C-M-\\" 'clang-format-region c++-mode-map)
+  :bind (:map c-mode-base-map
+              ("C-M-\\" . clang-format-region))
   )
 

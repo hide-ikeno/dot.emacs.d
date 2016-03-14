@@ -46,13 +46,13 @@
 ;;; filecache
 ;;;=============================================================================
 (use-package filecache
+  :bind (:map minibuffer-local-completion-map
+              ("C-c C-i" . file-cache-minibuffer-complete))
   :config
   (file-cache-add-directory-list
    (list "~"
          "~/bin"
          "~/program/"
          ))
-  (bind-keys :map minibuffer-local-completion-map
-             ("C-c C-i" . file-cache-minibuffer-complete))
   )
 

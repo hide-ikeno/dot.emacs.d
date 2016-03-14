@@ -35,9 +35,9 @@
   ;; C-s     候補検索
   ;; C-M-s   候補フィルタリング
   ;; [tab]   共通するprefixを挿入
-  (bind-keys :map company-active-map
-             ;; M-? :  doc を別バッファに表示
-             ("M-?" . company-show-doc-buffer))
+  :bind (:map company-active-map
+              ;; M-? :  doc を別バッファに表示
+              ("M-?" . company-show-doc-buffer))
   )
 
 

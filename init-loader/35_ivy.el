@@ -42,6 +42,10 @@
          ("C-c k"   . counsel-ag)
          ("C-x l"   . counsel-locate)
          ("M-y"     . counsel-yank-pop)
+         :map help-map
+         ("f" . counsel-describe-function)
+         ("v" . counsel-describe-variable)
+         ("l" . counsel-load-library)
          )
   :config
   (use-package avy-migemo-e.g.swiper)
@@ -53,10 +57,6 @@
         )
   ;; (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   (ivy-mode 1)
-  (bind-keys :map help-map
-             ("f" . counsel-describe-function)
-             ("v" . counsel-describe-variable)
-             ("l" . counsel-load-library))
   )
 
 

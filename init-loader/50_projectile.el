@@ -82,5 +82,6 @@ _s-f_: file            _a_: ag                _i_: Ibuffer           _c_: cache 
     ("`"   hydra-projectile-other-window/body "other window")
     ("q"   nil "cancel" :color blue))
 
-  (bind-key "C-c P" 'hydra-projectile/body)
+  :bind ("C-c P" . hydra-projectile/body)
   )
+
