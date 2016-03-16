@@ -17,24 +17,24 @@
   View-goto-line-last
   View-scroll-line-forward
   View-scroll-line-backward
-  :bind (:map view-mode-map
-              ;; less 感覚の操作
-              ("f" . View-scroll-page-forward)
-              ("b" . View-scroll-page-backward)
-              ("n" . View-search-last-regexp-forward)
-              ("N" . View-search-last-regexp-backward)
-              ("?" . View-search-regexp-backward)
-              ("G" . View-goto-line-last)
-              ;; vi/w3m 感覚の操作
-              ("h" . backward-char)
-              ("j" . next-line)
-              ("k" . previous-line)
-              ("l" . forward-char)
-              ("J" . View-scroll-line-forward)
-              ("K" . View-scroll-line-backward))
   :config
   ;; 読み込み専用ファイルを view-mode で開く
   (setq view-read-only t)
+  (bind-keys :map view-mode-map
+             ;; less 感覚の操作
+             ("f" . View-scroll-page-forward)
+             ("b" . View-scroll-page-backward)
+             ("n" . View-search-last-regexp-forward)
+             ("N" . View-search-last-regexp-backward)
+             ("?" . View-search-regexp-backward)
+             ("G" . View-goto-line-last)
+             ;; vi/w3m 感覚の操作
+             ("h" . backward-char)
+             ("j" . next-line)
+             ("k" . previous-line)
+             ("l" . forward-char)
+             ("J" . View-scroll-line-forward)
+             ("K" . View-scroll-line-backward))
   )
 
 ;;;=============================================================================
