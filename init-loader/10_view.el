@@ -20,21 +20,40 @@
   :config
   ;; 読み込み専用ファイルを view-mode で開く
   (setq view-read-only t)
-  (bind-keys :map view-mode-map
-             ;; less 感覚の操作
-             ("f" . View-scroll-page-forward)
-             ("b" . View-scroll-page-backward)
-             ("n" . View-search-last-regexp-forward)
-             ("N" . View-search-last-regexp-backward)
-             ("?" . View-search-regexp-backward)
-             ("G" . View-goto-line-last)
-             ;; vi/w3m 感覚の操作
-             ("h" . backward-char)
-             ("j" . next-line)
-             ("k" . previous-line)
-             ("l" . forward-char)
-             ("J" . View-scroll-line-forward)
-             ("K" . View-scroll-line-backward))
+  ;; バッファローカルな変数の設定, local-set-keyなどは hook で設定すべき
+  (defvar pager-keybind
+    `( ;; less-like
+      ("f" . View-scroll-page-forward)
+      ("b" . View-scroll-page-backward)
+      ("n" . View-search-last-regexp-forward)
+      ("N" . View-search-last-regexp-backward)
+      ("?" . View-search-regexp-backward)
+      ("G" . View-goto-line-last)
+      ;; vi/w3m-like
+      ("h" . backward-char)
+      ("j" . next-line)
+      ("k" . previous-line)
+      ("l" . forward-char)
+      ("J" . View-scroll-line-forward)
+      ;; bm-easy
+      ("." . bm-toggle)
+      ("[" . bm-previous)
+      ("]" . bm-next)
+      ))
+  (defun define-many-keys (keymap key-table &optional includes)
+    (let (key cmd)
+      (dolist (key-cmd key-table)
+        (setq key (car key-cmd)
+              cmd (cdr key-cmd))
+        (if (or (not includes) (member key includes))
+            (define-key keymap key cmd))))
+    keymap)
+
+  (defun view-mode-hook0 ()
+    (define-many-keys view-mode-map pager-keybind)
+    ;; (hl-line-mode 1)
+    (define-key view-mode-map " " 'scroll-up))
+  (add-hook 'view-mode-hook 'view-mode-hook0)
   )
 
 ;;;=============================================================================
