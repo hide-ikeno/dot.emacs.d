@@ -5,6 +5,12 @@
 ;;;
 
 ;;;=============================================================================
+;;; bm.el -- bookmark file
+;;;=============================================================================
+(el-get-bundle bm)
+(use-package bm)
+
+;;;=============================================================================
 ;;; view.el -- view mode
 ;;;=============================================================================
 (use-package view
@@ -17,54 +23,30 @@
   View-goto-line-last
   View-scroll-line-forward
   View-scroll-line-backward
+  :bind
+  (:map view-mode-map
+        ;; less-like
+        ("f" . View-scroll-page-forward)
+        ("b" . View-scroll-page-backward)
+        ("n" . View-search-last-regexp-forward)
+        ("N" . View-search-last-regexp-backward)
+        ("?" . View-search-regexp-backward)
+        ("G" . View-goto-line-last)
+        ;; vi/w3m-like
+        ("h" . backward-char)
+        ("j" . next-line)
+        ("k" . previous-line)
+        ("l" . forward-char)
+        ("J" . View-scroll-line-forward)
+        ;; bm-easy
+        ("." . bm-toggle)
+        ("[" . bm-previous)
+        ("]" . bm-next)
+        )
   :config
   ;; 読み込み専用ファイルを view-mode で開く
+  (use-package bm)
   (setq view-read-only t)
-  ;; バッファローカルな変数の設定, local-set-keyなどは hook で設定すべき
-  (defvar pager-keybind
-    `( ;; less-like
-      ("f" . View-scroll-page-forward)
-      ("b" . View-scroll-page-backward)
-      ("n" . View-search-last-regexp-forward)
-      ("N" . View-search-last-regexp-backward)
-      ("?" . View-search-regexp-backward)
-      ("G" . View-goto-line-last)
-      ;; vi/w3m-like
-      ("h" . backward-char)
-      ("j" . next-line)
-      ("k" . previous-line)
-      ("l" . forward-char)
-      ("J" . View-scroll-line-forward)
-      ;; bm-easy
-      ("." . bm-toggle)
-      ("[" . bm-previous)
-      ("]" . bm-next)
-      ))
-  (defun define-many-keys (keymap key-table &optional includes)
-    (let (key cmd)
-      (dolist (key-cmd key-table)
-        (setq key (car key-cmd)
-              cmd (cdr key-cmd))
-        (if (or (not includes) (member key includes))
-            (define-key keymap key cmd))))
-    keymap)
-
-  (defun view-mode-hook0 ()
-    (define-many-keys view-mode-map pager-keybind)
-    ;; (hl-line-mode 1)
-    (define-key view-mode-map " " 'scroll-up))
-  (add-hook 'view-mode-hook 'view-mode-hook0)
-  )
-
-;;;=============================================================================
-;;; bm.el -- bookmark file
-;;;=============================================================================
-(el-get-bundle bm)
-(use-package bm
-  :bind (:map view-mode-map
-              ("m" . bm-toggle)
-              ("[" . bm-previous)
-              ("]" . bm-next))
   )
 
 ;; Viewer
