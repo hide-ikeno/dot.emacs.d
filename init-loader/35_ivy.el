@@ -11,6 +11,7 @@
 ;;; https://github.com/abo-abo/swiper
 ;;;============================================================================
 (el-get-bundle swiper) ;; swiper uses ivy.el
+(el-get-bundle avy)
 (el-get-bundle avy-migemo)
 
 (use-package ivy
@@ -22,6 +23,7 @@
   ivy-use-virtual-buffers
   :commands
   ivy-mode
+  ivy-resume
   swiper
   counsel-ag
   counsel-find-file
@@ -42,6 +44,7 @@
          ("C-c k"   . counsel-ag)
          ("C-x l"   . counsel-locate)
          ("M-y"     . counsel-yank-pop)
+         ("C-c C-r" . ivy-resume)
          :map help-map
          ("f" . counsel-describe-function)
          ("v" . counsel-describe-variable)
