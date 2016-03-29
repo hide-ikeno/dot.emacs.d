@@ -20,7 +20,8 @@
   global-company-mode
   company-show-doc-buffer
   :init
-  (global-company-mode) ;; Turn on company-mode
+  ;; Use company-mode in all buffers
+  (add-hook 'after-init-hook 'global-company-mode)
   :config
   (setq company-idle-delay 0.2          ; default 0.5
         company-minimum-prefix-length 4 ; default 4
