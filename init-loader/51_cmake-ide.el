@@ -83,8 +83,12 @@
 ;;;=============================================================================
 ;;; cmake-ide -- Use Emacs as a C/C++ IDE
 ;;;=============================================================================
-(el-get-bundle cmake-ide
+(el-get-bundle cmake-ide)
+(use-package cmake-ide
   :commands
+  cmake-ide-compile
   cmake-ide-setup
-  :init
+  :bind
+  (("<f9>" . cmake-ide-compile))
+  :config
   (cmake-ide-setup))
