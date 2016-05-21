@@ -1,6 +1,6 @@
 ;;; -*- mode: lisp-interaction; coding: utf-8-unix; indent-tabs-mode: nil; -*-
 ;;;
-;;; File: 60_search.el
+;;; file: 60_search.el
 ;;; Description: Customize search commands, like isearch and occur.
 ;;;
 ;;; Code:
@@ -12,13 +12,18 @@
 (el-get-bundle avy)
 
 (use-package avy
+  :demand
   :defines
   avy-background
-  add-keys-to-avy
   :commands (avy-goto-char
              avy-goto-char-2
              avy-goto-word-1)
-  :init
+  :config
+  ;; Darken background
+  (setq avy-background t)
+  ;;
+  ;; avy version of one-step activation
+  ;; http://d.hatena.ne.jp/rkworks/20120520/1337528737
   (defun add-keys-to-avy (prefix c &optional mode)
     (define-key global-map
       (read-kbd-macro (concat prefix (string c)))
@@ -27,71 +32,48 @@
          (funcall (if (eq ',mode 'word)
                       #'avy-goto-word-1
                     #'avy-goto-char) ,c))))
-  :config
-  ;; Darken background
-  (setq avy-background t)
-  ;;
-  ;; avy version of one-step activation
-  ;; http://d.hatena.ne.jp/rkworks/20120520/1337528737
   ;;
   ;; Assing key bindings for all characters
   ;; eg, A-s-x will activate (avy-goto-char ?x), ie, all occurrence of x
-  (loop for c from ?! to ?~ do (add-keys-to-avy "A-s-" c))
+  (loop for c from ?! to ?~ do (add-keys-to-avy "M-s-" c))
   ;; eg, M-s-x will activate (avy-goto-word-1 ?x), ie, all words starting with x
-  (loop for c from ?! to ?~ do (add-keys-to-avy "M-s-" c 'word))
+  (loop for c from ?! to ?~ do (add-keys-to-avy "A-s-" c 'word))
   )
 
-;; ;;;=============================================================================
-;; ;;; imenus.el --- Imenu for multiple buffers
-;; ;;;=============================================================================
-;; (el-get-bundle imenus)
-;; ;; See, http://rubikitch.com/2015/04/09/imenus/
-;; (use-package imenus
+;; (use-package avy-migemo
+;;   :demand
+;;   :commands
+;;   add-keys-to-avy
+;;   avy-migemo-goto-char
+;;   avy-migemo-goto-char-2
+;;   avy-migemo-goto-word-1
+;;   avy-migemo-mode
+;;   :defines
+;;   avy-background
 ;;   :config
-;;   ;; エラー対策
-;;   (defun imenu-find-default--or-current-symbol (&rest them)
-;;     (condition-case nil
-;;         (apply them)
-;;       (error (thing-at-point 'symbol))))
-;;   (advice-add 'imenu-find-default :around 'imenu-find-default--or-current-symbol)
-;;   ;; なぜか現在のシンボルを取ってくれないから
-;;   (defun imenus-exit-minibuffer ()
-;;     (exit-minibuffer))
-
-;;   ;; ido化: imenus/with-ido imenus-mode-buffers/with-idoを定義
-;;   (with-ido-completion imenus)
-;;   ;; C-M-s C-M-sで現在のシンボルを helm-multi-swoop できるよ！
-;;   (bind-key "C-M-s" (with-ido-completion imenus-mode-buffers))
-
-;;   ;; M-oでのmulti-occurをシンボル正規表現にするよう改良
-;;   (push '(occur . imenus-ido-multi-occur) imenus-actions)
-;;   (defun imenus-ido-multi-occur (buffers input)
-;;     (multi-occur buffers
-;;                  (format "\\_<%s\\_>"
-;;                          (regexp-quote (replace-regexp-in-string "^.*|" "" input)))))
-
-;;   ;; C-M-sで関数呼び出しを helm-multi-swoop できるようにした
-;;   (use-package helm-swoop
-;;     :defines
-;;     imenus-actions
-;;     imenus-minibuffer-map
-;;     imenus-exit-status
-;;     :functions
-;;     imenus-exit-minibuffer
-;;     :config
-;;     (push '(helm-multi-swoop . imenus-helm-multi-swoop) imenus-actions)
-;;     (defun imenus-helm-multi-swoop (buffers input)
-;;       (helm-multi-swoop (replace-regexp-in-string "^.*|" "" input)
-;;                         (mapcar 'buffer-name buffers)))
-;;     (bind-key "C-M-s" 'imenus-exit-to-helm-multi-swoop imenus-minibuffer-map)
-;;     (defun imenus-exit-to-helm-multi-swoop ()
-;;       "Exit from imenu prompt; start `helm-multi-swoop' with the current input."
-;;       (interactive)
-;;       (setq imenus-exit-status 'helm-multi-swoop)
-;;       (imenus-exit-minibuffer))
-;;     )
+;;   ;; Darken background
+;;   (setq avy-background t)
+;;   (avy-migemo-mode 1)
+;;   ;;
+;;   ;; avy-migemo version of one-step activation
+;;   ;;
+;;   ;; http://d.hatena.ne.jp/rkworks/20120520/1337528737
+;;   ;; http://qiita.com/kaz-yos/items/458630d7bb32f8d32163
+;;   (defun add-keys-to-avy (prefix c &optional mode)
+;;     (define-key global-map
+;;       (read-kbd-macro (concat prefix (string c)))
+;;       `(lambda ()
+;;          (interactive)
+;;          (funcall (if (eq ',mode 'word)
+;;                       #'avy-migemo-goto-word-1
+;;                     #'avy-migemo-goto-char) ,c))))
+;;   ;;
+;;   ;; Assing key bindings for all characters
+;;   ;; eg, A-s-x will activate (avy-goto-char ?x), ie, all occurrence of x
+;;   (loop for c from ?! to ?~ do (add-keys-to-avy "A-s-" c))
+;;   ;; eg, M-s-x will activate (avy-goto-word-1 ?x), ie, all words starting with x
+;;   (loop for c from ?! to ?~ do (add-keys-to-avy "M-s-" c 'word))
 ;;   )
-
 ;;;=============================================================================
 ;;; wgrep --- Writable grep buffer and apply the changes to files
 ;;;=============================================================================
@@ -108,7 +90,10 @@
 ;; (el-get-bundle ag)
 (el-get-bundle wgrep)
 (use-package wgrep-ag
-  :defines wgrep-enable-key wgrep-auto-save-buffer wgrep-change-readonly-file
+  :defines
+  wgrep-enable-key
+  wgrep-auto-save-buffer
+  wgrep-change-readonly-file
   :config
   ;; r で wgrepモードにする (default "C-c C-p")
   (setf wgrep-enable-key "r")
