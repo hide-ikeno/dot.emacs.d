@@ -37,26 +37,26 @@
 ;;;=============================================================================
 ;;; pyenv-mode
 ;;;=============================================================================
-(el-get-bundle pythonic)
+(el-get-bundle pythonic :depends f)
 (el-get-bundle pyenv-mode)
 (use-package pyenv-mode
   :config
   (pyenv-mode))
 
-;; ;;;=============================================================================
-;; ;;; Anaconda mode -- Code navigation, documentation lookup and completion for
-;; ;;; Python.
-;; ;;;=============================================================================
-;; (el-get-bundle anaconda-mode)
-;; (el-get-bundle company-anaconda)
+;;;=============================================================================
+;;; Anaconda mode -- Code navigation, documentation lookup and completion for
+;;; Python.
+;;;=============================================================================
+(el-get-bundle anaconda-mode)
+(el-get-bundle company-anaconda)
 
-;; (use-package anaconda-mode
-;;   :config
-;;   (add-hook 'python-mode-hook 'anaconda-mode)
-;;   (add-hook 'python-mode-hook 'eldoc-mode)
-;;   )
+(use-package anaconda-mode
+  :config
+  (add-hook 'python-mode-hook 'anaconda-mode)
+  (add-hook 'python-mode-hook 'eldoc-mode)
+  )
 
-;; (use-package company-anaconda
-;;   :config
-;;   (add-to-list 'company-backends 'company-anaconda)
-;;   )
+(use-package company-anaconda
+  :config
+  (add-to-list 'company-backends 'company-anaconda)
+  )
