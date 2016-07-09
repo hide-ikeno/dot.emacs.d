@@ -28,8 +28,8 @@
 (global-set-key (kbd "M-h") 'backward-kill-word)
 ;; M-H mark-paragraph
 (global-set-key (kbd "M-H") 'mark-paragraph)
-;; M-g goto-line
-(global-set-key (kbd "M-g") 'goto-line)
+;; ;; M-g goto-line
+;; (global-set-key (kbd "M-g") 'goto-line)
 
 ;;; 日本語でインクリメンタルサーチ
 (define-key isearch-mode-map (kbd "C-k") 'isearch-edit-string)
