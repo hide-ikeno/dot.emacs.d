@@ -21,16 +21,22 @@
   ivy-height
   ivy-re-builders-alist
   ivy-use-virtual-buffers
+  ivy-occur-mode-map
   :commands
   ivy-mode
   ivy-resume
+  ivy-wgrep-change-to-wgrep-mode
   :config
   (setq ivy-use-virtual-buffers t
         ivy-height 15
         ivy-count-format "(%d/%d) "
         ivy-display-style 'fancy
         )
+  (bind-keys :map ivy-occur-mode-map
+             ("r" . ivy-wgrep-change-to-wgrep-mode)
+             )
   ;; (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  :init
   (ivy-mode 1)
   )
 
@@ -40,6 +46,8 @@
   counsel-find-file
   counsel-git
   counsel-git-grep
+  counsel-grep-or-swiper
+  counsel-imenu
   counsel-info-lookup-symbol
   counsel-locate
   counsel-M-x
@@ -52,6 +60,8 @@
          ("C-c g"   . counsel-git)
          ("C-c j"   . counsel-git-grep)
          ("C-c k"   . counsel-ag)
+         ("C-s"     . counsel-grep-or-swiper)
+         ("C-r"     . counsel-imenu)
          ("C-x l"   . counsel-locate)
          ("M-y"     . counsel-yank-pop)
          :map help-map
@@ -62,6 +72,6 @@
   :config
   )
 
-(use-package swiper
-  :bind (("C-s" . swiper))
-  )
+;; (use-package swiper
+;;   :bind (("C-s" . swiper))
+;;   )

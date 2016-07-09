@@ -15,9 +15,11 @@
   :demand
   :defines
   avy-background
-  :commands (avy-goto-char
-             avy-goto-char-2
-             avy-goto-word-1)
+  :commands
+  avy-goto-char
+  avy-goto-char-2
+  avy-goto-word-1
+  add-keys-to-avy
   :config
   ;; Darken background
   (setq avy-background t)
@@ -37,43 +39,9 @@
   ;; eg, A-s-x will activate (avy-goto-char ?x), ie, all occurrence of x
   (loop for c from ?! to ?~ do (add-keys-to-avy "M-s-" c))
   ;; eg, M-s-x will activate (avy-goto-word-1 ?x), ie, all words starting with x
-  (loop for c from ?! to ?~ do (add-keys-to-avy "A-s-" c 'word))
+  (loop for c from ?! to ?~ do (add-keys-to-avy "M-s-S-" c 'word))
   )
 
-;; (use-package avy-migemo
-;;   :demand
-;;   :commands
-;;   add-keys-to-avy
-;;   avy-migemo-goto-char
-;;   avy-migemo-goto-char-2
-;;   avy-migemo-goto-word-1
-;;   avy-migemo-mode
-;;   :defines
-;;   avy-background
-;;   :config
-;;   ;; Darken background
-;;   (setq avy-background t)
-;;   (avy-migemo-mode 1)
-;;   ;;
-;;   ;; avy-migemo version of one-step activation
-;;   ;;
-;;   ;; http://d.hatena.ne.jp/rkworks/20120520/1337528737
-;;   ;; http://qiita.com/kaz-yos/items/458630d7bb32f8d32163
-;;   (defun add-keys-to-avy (prefix c &optional mode)
-;;     (define-key global-map
-;;       (read-kbd-macro (concat prefix (string c)))
-;;       `(lambda ()
-;;          (interactive)
-;;          (funcall (if (eq ',mode 'word)
-;;                       #'avy-migemo-goto-word-1
-;;                     #'avy-migemo-goto-char) ,c))))
-;;   ;;
-;;   ;; Assing key bindings for all characters
-;;   ;; eg, A-s-x will activate (avy-goto-char ?x), ie, all occurrence of x
-;;   (loop for c from ?! to ?~ do (add-keys-to-avy "A-s-" c))
-;;   ;; eg, M-s-x will activate (avy-goto-word-1 ?x), ie, all words starting with x
-;;   (loop for c from ?! to ?~ do (add-keys-to-avy "M-s-" c 'word))
-;;   )
 ;;;=============================================================================
 ;;; wgrep --- Writable grep buffer and apply the changes to files
 ;;;=============================================================================

@@ -66,15 +66,23 @@
 (use-package rtags
   :commands
   rtags-enable-standard-keybindings
+  rtags-find-references
   rtags-find-references-at-point
+  rtags-find-symbol
   rtags-find-symbol-at-point
+  rtags-imenu
   rtags-location-stack-back
   rtags-location-stack-forward
+  rtags-start-process-unless-running
   :config
   (rtags-enable-standard-keybindings c-mode-base-map)
+  (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
   :bind (:map c-mode-base-map
+              ("C-." . rtags-find-symbol)
+              ("C-," . rtags-find-reference)
               ("M-." . rtags-find-symbol-at-point)
               ("M-," . rtags-find-reference-at-point)
+              ("M-i" . rtags-imenu)
               ("C-{" . rtags-location-stack-back)
               ("C-}" . rtags-location-stack-forward)
               )
