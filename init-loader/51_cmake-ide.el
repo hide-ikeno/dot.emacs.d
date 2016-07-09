@@ -82,7 +82,7 @@
               ("C-," . rtags-find-reference)
               ("M-." . rtags-find-symbol-at-point)
               ("M-," . rtags-find-reference-at-point)
-              ("M-i" . rtags-imenu)
+              ("C-c i" . rtags-imenu)
               ("C-{" . rtags-location-stack-back)
               ("C-}" . rtags-location-stack-forward)
               )
