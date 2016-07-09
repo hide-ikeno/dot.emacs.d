@@ -73,7 +73,7 @@
          ("C-c j"   . counsel-git-grep)
          ("C-c k"   . counsel-ag)
          ("C-s"     . counsel-grep-or-swiper)
-         ("C-r"     . counsel-imenu)
+         ("M-i"     . counsel-imenu)
          ("C-x l"   . counsel-locate)
          ("M-y"     . counsel-yank-pop)
          :map help-map
