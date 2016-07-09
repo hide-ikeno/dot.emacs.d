@@ -1,6 +1,6 @@
 ;;; -*- mode: lisp-interaction; coding: utf-8-unix; indent-tabs-mode: nil; -*-
 ;;;
-;;; File: 35_yivy.el
+;;; File: 35_ivy.el
 ;;; Description: Customize yIvy
 ;;;
 ;;; Code:
@@ -13,6 +13,8 @@
 ;; (el-get-bundle ivy)     ;; swiper uses ivy.el
 ;; (el-get-bundle counsel) ;; counsel uses ivy.el
 (el-get-bundle swiper)  ;; swiper uses ivy.el
+
+
 
 (use-package ivy
   :defines
@@ -38,6 +40,16 @@
   ;; (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
   :init
   (ivy-mode 1)
+  )
+
+
+;; M-q : swiper-query-replace
+;; C-l : swiper-recenter-top-bottom
+;; C-' : swiper-avy
+;; C-7 : swiper-mc
+;; C-c C-f : swiper-toggle-face-matching
+(use-package swiper
+  ;; :bind (("C-s" . swiper))
   )
 
 (use-package counsel
@@ -72,6 +84,3 @@
   :config
   )
 
-;; (use-package swiper
-;;   :bind (("C-s" . swiper))
-;;   )
